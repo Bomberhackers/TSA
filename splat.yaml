@@ -1,0 +1,39 @@
+name: Baku Bomberman 2 (JP)
+basename: bm64tsa
+sha1: 179cab7426755f14bd3f4999f3789eb6d7af64c4
+options:
+  compiler: IDO
+  symbol_addrs_path: tools/symbol_addrs.txt
+  target_path: baserom.z64
+  basename: bm64tsa
+  base_path: .
+  ld_script_path: bm64tsa.ld
+  platform: n64
+  detect_redundant_function_end: true
+segments:
+  - name: header
+    type: header
+    start: 0x00
+    vram: 0
+    subsegments:
+    - [0x0000, header, header]
+  - name: boot
+    type: code
+    start: 0x0040
+    vram: 0xA4000040
+    exclusive_ram_id: boot
+    subsegments:
+    - [0x0040, asm, boot]
+    - [0x0B70, bin, bootcode_font]
+  - name: boot_code
+    type: code
+    bss_size: 0x0 # unknown
+    start: 0x1000
+    vram: 0x80000400
+    subsegments:
+    - [0x1000, hasm, entry] # bootloader
+    - [0x1050, asm]
+    - [0x89750, bin] # rest of ROM
+
+  - [0x89750, bin]
+  - [0x1000000]
