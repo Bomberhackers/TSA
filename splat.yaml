@@ -250,7 +250,9 @@ segments:
     - [0x88940, asm]
     - [0x88960, asm]
     - [0x895C0, asm]
-    - [0x89750, bin] # rest of ROM
+    - [0x89750, data] # rest of data
+    - [0x93680, rodata] # rest of rodata
+    - [0x95A10, bin] # seems to be after data/rodata...
 
   - name: map
     type: data
