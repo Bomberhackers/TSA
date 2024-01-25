@@ -7,6 +7,7 @@ TARGET = bm64tsa
 NON_MATCHING ?= 0
 RUN_CC_CHECK ?= 1
 WERROR ?= 0
+PYTHON ?= $(PYTHON)
 
 # Fail early if baserom does not exist
 ifeq ($(wildcard $(BASEROM)),)
@@ -18,6 +19,8 @@ ifeq ($(UNAME_S),Linux)
   HOST_OS := linux
 else ifeq ($(UNAME_S),Darwin)
   HOST_OS := macos
+else ifeq ($(findstring MINGW64_NT,$(UNAME_S)),MINGW64_NT)
+  HOST_OS := nt64
 else
   $(error Unsupported host/building OS <$(UNAME_S)>)
 endif
@@ -91,7 +94,7 @@ endif
 # game uses IDO 5.3
 CC = tools/ido_recomp/$(HOST_OS)/5.3/cc
 CC_OLD = tools/ido_recomp/$(HOST_OS)/5.3/cc
-ASMPROC = python3 tools/asmproc/build.py
+ASMPROC = $(PYTHON) tools/asmproc/build.py
 ASMPROC_FLAGS :=
 
 # unverified
@@ -115,6 +118,10 @@ ifneq ($(RUN_CC_CHECK),0)
   CC_CHECK := gcc -fsyntax-only
 
   ifeq ($(HOST_OS),linux)
+    CC_CHECK += -m32
+  endif
+
+  ifeq ($(HOST_OS),nt64)
     CC_CHECK += -m32
   endif
 
@@ -168,7 +175,7 @@ submodules:
 	git submodule update --init --recursive
 
 split:
-	rm -rf $(DATA_DIRS) $(ASM_DIRS) && ./tools/n64splat/split.py $(SPLAT_YAML)
+	rm -rf $(DATA_DIRS) $(ASM_DIRS) && $(PYTHON) ./tools/n64splat/split.py $(SPLAT_YAML)
 
 setup: distclean submodules split
 
@@ -201,12 +208,12 @@ $(BUILD_DIR)/%.c.o: %.c
 
 $(BUILD_DIR)/src/libultra/libc/ll.c.o: src/libultra/libc/ll.c
 	$(CC) -c $(CFLAGS) $(OPTFLAGS) -o $@ $<
-	python3 tools/set_o32abi_bit.py $@
+	$(PYTHON) tools/set_o32abi_bit.py $@
 	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.s)
 
 $(BUILD_DIR)/src/libultra/libc/llcvt.c.o: src/libultra/libc/llcvt.c
 	$(CC) -c $(CFLAGS) $(OPTFLAGS) -o $@ $<
-	python3 tools/set_o32abi_bit.py $@
+	$(PYTHON) tools/set_o32abi_bit.py $@
 	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.s)
 
 $(BUILD_DIR)/%.s.o: %.s
