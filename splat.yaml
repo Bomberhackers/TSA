@@ -252,7 +252,14 @@ segments:
     - [0x895C0, asm]
     - [0x89750, data] # rest of data
     - [0x93680, rodata] # rest of rodata
-    - [0x95A10, bin] # seems to be after data/rodata...
+
+  - name: rest_of_data
+    type: data
+    bss_size: 0x0 # unknown
+    start: 0x95A10
+    vram: 0x00000000 # unknown
+    subsegments:
+    - [0x95A10, bin] # addresses
 
   - name: map
     type: data
