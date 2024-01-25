@@ -7,7 +7,7 @@ TARGET = bm64tsa
 NON_MATCHING ?= 0
 RUN_CC_CHECK ?= 1
 WERROR ?= 0
-PYTHON ?= $(PYTHON)
+PYTHON ?= python3
 
 # Fail early if baserom does not exist
 ifeq ($(wildcard $(BASEROM)),)
