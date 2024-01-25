@@ -102,25 +102,31 @@ segments:
     - [0x72C10, asm, getsp]
     - [0x72C20, asm, event]
     # start of libultra
-    - [0x73B60, asm]
-    - [0x73C70, asm]
-    - [0x73D20, asm]
-    - [0x73DE0, asm]
-    - [0x73F80, asm]
-    - [0x740C0, asm]
-    - [0x74180, asm]
-    - [0x741D0, asm]
-    - [0x74250, asm]
-    - [0x74300, asm]
-    - [0x74380, asm]
-    - [0x74690, asm]
-    - [0x746F0, asm]
-    - [0x74760, asm]
-    - [0x747C0, asm]
-    - [0x74880, asm]
-    - [0x749D0, asm]
-    - [0x74D10, asm]
-    - [0x74D40, asm]
+    - [0x73B60, asm,  libultra/audio/synstartvoiceparam]
+    - [0x73C70, asm,  libultra/audio/synsetpan]
+    - [0x73D20, hasm, libultra/os/maptlb]
+    - [0x73DE0, asm,  libultra/io/pimgr]
+    - [0x73F50, asm,  libultra/os/createmesgqueue]
+    - [0x73F80, asm,  libultra/os/recvmesg]
+    - [0x740C0, asm,  libultra/io/pidma]
+    - [0x74180, asm,  libultra/os/yieldthread]
+    - [0x741D0, hasm, libultra/os/writebackdcache]
+    - [0x74250, hasm, libultra/os/invaldcache]
+    - [0x74300, asm,  libultra/os/invalicache]
+    - [0x74380, asm,  libultra/io/vimgr]
+    - [0x74690, asm,  libultra/io/visetmode]
+    - [0x746F0, asm,  libultra/io/viblack]
+    - [0x74760, asm,  libultra/io/visetevent]
+    - [0x747C0, asm,  libultra/os/seteventmesg]
+    - [0x74880, asm,  libultra/os/createthread]
+    - [0x749D0, asm,  libultra/os/startthread]
+    - [0x74B20, hasm, libultra/os/setintmask]
+    - [0x74BC0, asm,  libultra/os/sendmesg]
+    - [0x74D10, hasm, libultra/os/writebackdcacheall]
+    - [0x74D40, asm,  libultra/io/sptaskyield]
+    - [0x74D60, asm,  libultra/io/sptaskyielded]
+    - [0x74DC0, asm,  libultra/io/sptask]
+    
     - [0x75080, asm]
     - [0x750D0, asm]
     - [0x75480, asm]
@@ -131,6 +137,7 @@ segments:
     - [0x75880, asm]
     - [0x75B60, asm]
     - [0x75BC0, asm]
+    
     - [0x75DA0, asm]
     - [0x75E10, asm]
     - [0x75E50, asm]
@@ -141,6 +148,7 @@ segments:
     - [0x76660, asm]
     - [0x76790, asm]
     - [0x76930, asm]
+    
     - [0x76B10, asm]
     - [0x76E20, asm]
     - [0x76FF0, asm]
@@ -151,6 +159,7 @@ segments:
     - [0x78340, asm]
     - [0x78710, asm]
     - [0x78A40, asm]
+    
     - [0x78C50, asm]
     - [0x78EC0, asm]
     - [0x79150, asm]
@@ -161,6 +170,7 @@ segments:
     - [0x79780, asm]
     - [0x79880, asm]
     - [0x798B0, asm]
+    
     - [0x798E0, asm]
     - [0x79920, asm]
     - [0x7AC00, asm]
@@ -171,6 +181,7 @@ segments:
     - [0x7BBB0, asm]
     - [0x7BC20, asm]
     - [0x7BCF0, asm]
+    
     - [0x7BD10, asm]
     - [0x7BD30, asm]
     - [0x7BD50, asm]
@@ -181,6 +192,7 @@ segments:
     - [0x7C670, asm]
     - [0x7C6D0, asm]
     - [0x7C730, asm]
+    
     - [0x7C790, asm]
     - [0x7C7A0, asm]
     - [0x7C860, asm]
@@ -192,6 +204,7 @@ segments:
     - [0x7D3D0, asm]
     - [0x7D5A0, asm]
     - [0x7D5E0, asm]
+    
     - [0x7D6C0, asm]
     - [0x7D750, asm]
     - [0x7D820, asm]
@@ -201,6 +214,7 @@ segments:
     - [0x7F120, asm]
     - [0x7F130, asm]
     - [0x7F140, asm]
+    
     - [0x7F170, asm]
     - [0x7F200, asm]
     - [0x7F230, asm]
@@ -212,6 +226,7 @@ segments:
     - [0x80310, asm]
     - [0x803F0, asm]
     - [0x804A0, asm]
+    
     - [0x80790, asm]
     - [0x80810, asm]
     - [0x80A40, asm]
@@ -222,6 +237,7 @@ segments:
     - [0x82450, asm]
     - [0x82740, asm]
     - [0x840D0, asm]
+    
     - [0x84410, asm]
     - [0x844E0, asm]
     - [0x84590, asm]
@@ -232,6 +248,7 @@ segments:
     - [0x84A10, asm]
     - [0x84A20, asm]
     - [0x84AE0, asm]
+    
     - [0x84B10, asm]
     - [0x852C0, asm]
     - [0x85360, asm]
@@ -242,6 +259,7 @@ segments:
     - [0x87180, asm]
     - [0x872E0, asm]
     - [0x87440, asm]
+    
     - [0x87490, asm]
     - [0x874A0, asm]
     - [0x874D0, asm]
@@ -250,6 +268,7 @@ segments:
     - [0x88940, asm]
     - [0x88960, asm]
     - [0x895C0, asm]
+    
     - [0x89750, data] # rest of data
     - [0x93680, rodata] # rest of rodata
 
