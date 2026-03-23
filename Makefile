@@ -32,8 +32,7 @@ LD_SCRIPT := $(TARGET).ld
 LD_MAP := $(BUILD_DIR)/$(TARGET).map
 ASM_DIRS := asm asm/data asm/libultra asm/libultra/os asm/libultra/io asm/libultra/gu asm/libultra/libc asm/libultra/al asm/libultra/audio asm/data/libultra asm/data/libultra/gu asm/data/libultra/os
 DATA_DIRS := bin assets
-# not implemented
-#SRC_DIRS := $(shell find src -type d)
+SRC_DIRS := $(shell find src -type d)
 
 ########## Make tools ##########
 
@@ -109,7 +108,7 @@ OBJDUMP_FLAGS := -d -r -z -Mreg-names=32
 INC_DIRS := include include/PR include/audio include/ido . src/boot/malloc
 IINCS := $(foreach d,$(INC_DIRS),-I$d)
 # defines for SGI IDO
-CDEFS := -D_LANGUAGE_C
+CDEFS := -D_LANGUAGE_C -DF3DEX_GBI_2
 
 ifneq ($(RUN_CC_CHECK),0)
   CHECK_WARNINGS := -Wall -Wextra
@@ -144,13 +143,15 @@ LDFLAGS = -T undefined_syms_auto.txt -T undefined_funcs_auto.txt -T $(BUILD_DIR)
 
 ######################## Targets #############################
 
-$(foreach dir,$(ASM_DIRS) $(DATA_DIRS) $(COMPRESSED_DIRS) $(MAP_DIRS) $(BGM_DIRS),$(shell mkdir -p build/$(dir)))
+$(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(DATA_DIRS) $(COMPRESSED_DIRS) $(MAP_DIRS) $(BGM_DIRS),$(shell mkdir -p build/$(dir)))
 
 # Get a list of files which only have GLOBAL_ASM in them... via this piece of work.
 #DECOMP_BM64TSA_FILTERED := $(addprefix build/,$(addsuffix .o,$(foreach file,$(patsubst build/src/%,src/%,$(basename $(DECOMP_BM64TSA))),$(if $(shell grep GLOBAL_ASM <${file}),${file}))))
 
 # run ASM-processor on non-libultra source files which have GLOBAL_ASM in them.
 #$(DECOMP_BM64TSA_FILTERED): CC := $(ASMPROC) $(ASMPROC_FLAGS) $(CC) -- $(AS) $(ASFLAGS) --
+
+build/src/memutil.c.o: OPTFLAGS := -O3
 
 ######################## Build #############################
 
