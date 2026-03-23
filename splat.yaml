@@ -291,5 +291,5 @@ segments:
     - [0x285270, data] # strings
     - [0x28F4E0, bin]
 
-  - [0x28F4E0, bin]
+  - [0x28F4F0, bin]
   - [0x1000000]
