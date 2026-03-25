@@ -153,6 +153,7 @@ $(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(DATA_DIRS) $(COMPRESSED_DIRS) $(MAP_DIRS
 
 build/src/memutil.c.o: OPTFLAGS := -O3
 build/src/file.c.o: OPTFLAGS := -O3
+build/src/dma.c.o: OPTFLAGS := -O3
 
 ######################## Build #############################
 

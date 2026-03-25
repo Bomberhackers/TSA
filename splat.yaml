@@ -33,7 +33,7 @@ segments:
     subsegments:
     - [0x1000, hasm, entry] # bootloader
     - [0x1050, asm, zero_jump]
-    - [0x10D0, asm, dma]
+    - [0x10D0, c, dma]
     - [0x13F0, asm, scheduler] 
     - [0x1BA0, c, main]
     - [0x21B0, c, memutil]
