@@ -10,6 +10,7 @@ options:
   ld_script_path: bm64tsa.ld
   platform: n64
   detect_redundant_function_end: true
+  hasm_in_src_path: True
 segments:
   - name: header
     type: header
@@ -98,7 +99,8 @@ segments:
     - [0x5B3E0, asm, moutil]
     - [0x5B860, asm, effect]
     - [0x72A30, asm, jmp]
-    - [0x72B10, asm, watch]
+    - [0x72B10, hasm, watch] # handwritten
+    - [0x72B40, hasm, zj_setvec] # handwritten
     - [0x72B60, asm, slidstart]
     - [0x72C10, asm, getsp]
     - [0x72C20, asm, event]
