@@ -28,7 +28,6 @@ extern s32 dpmSortTable();                                   /* extern */
 extern s32 fadeExec(void*);                                /* extern */
 extern s32 fadeFadein2(s32, s32, s32, s32);                          /* extern */
 extern s32 fadeInit();                                       /* extern */
-extern s32 fexecInit();                                      /* extern */
 extern s32 gameresInit();                                    /* extern */
 extern s32 gfxBegin(s32);                                    /* extern */
 extern s32 gfxEnd(s32, s32);                                 /* extern */

@@ -40,7 +40,7 @@ segments:
     - [0x21B0, c, memutil]
     - [0x22C0, c, file]
     - [0x2C60, asm, initproc]
-    - [0x2DF0, asm, fblock]
+    - [0x2DF0, c, fblock]
     - [0x3340, c, decode]
     - [0x3500, asm, gameres]
     - [0x3F60, asm, controller]
