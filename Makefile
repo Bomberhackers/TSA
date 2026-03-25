@@ -155,6 +155,7 @@ build/src/memutil.c.o: OPTFLAGS := -O3
 build/src/file.c.o: OPTFLAGS := -O3
 build/src/dma.c.o: OPTFLAGS := -O3
 build/src/decode.c.o: OPTFLAGS := -O3
+build/src/zero_jump.c.o: OPTFLAGS := -O3
 
 ######################## Build #############################
 

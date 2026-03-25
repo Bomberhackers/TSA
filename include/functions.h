@@ -57,7 +57,6 @@ extern s32 sprInit();                                        /* extern */
 extern s32 viewDraw(s32);                                  /* extern */
 extern void* viewDrawSprite(s32, s32*);                    /* extern */
 extern s32 viewInit();                                       /* extern */
-extern s32 zerojumpinit();                                   /* extern */
 extern s32 zjSetVec(s32, s32*);                                  /* extern */
 extern s32 znzInit();                                        /* extern */
 

@@ -32,7 +32,7 @@ segments:
     vram: 0x80000400
     subsegments:
     - [0x1000, hasm, entry] # bootloader
-    - [0x1050, asm, zero_jump]
+    - [0x1050, c, zero_jump]
     - [0x10D0, c, dma]
     - [0x13F0, asm, scheduler] 
     - [0x1BA0, c, main]
