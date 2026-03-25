@@ -37,7 +37,8 @@ segments:
     - [0x13F0, asm, scheduler] 
     - [0x1BA0, c, main]
     - [0x21B0, c, memutil]
-    - [0x22C0, asm, file]
+    - [0x22C0, c, file]
+    - [0x2C60, asm, initproc]
     - [0x2DF0, asm, fblock]
     - [0x3340, asm, decode]
     - [0x3500, asm, gameres]
@@ -273,22 +274,40 @@ segments:
     - [0x89750, data] # rest of data
     - [0x93680, rodata] # rest of rodata
 
-  - name: rest_of_data
+  - name: unk_rsp
     type: data
     bss_size: 0x0 # unknown
     start: 0x95A10
+    vram: 0x90000000 # unknown
+    subsegments:
+    - [0x95A10, bin] # addresses and RSP
+
+  - name: zerojump
+    type: code
+    bss_size: 0x0 # unknown
+    start: 0x96480
+    vram: 0x801D0000
+    subsegments:
+    - [0x96480, asm, zerojump_func]
+    - [0x96520, data, zerojump_func]
+
+  - name: rest_of_data
+    type: data
+    bss_size: 0x0 # unknown
+    start: 0x965B0
     vram: 0x00000000 # unknown
     subsegments:
-    - [0x95A10, bin] # addresses
+    - [0x965B0, bin] # addresses
 
+    # No idea how they reference static symbols. We are NOT worrying about that right now.
   - name: map
-    type: data
+    type: bin
     bss_size: 0x0 # unknown
     start: 0x280000
     vram: 0x803E0000 # unknown
     subsegments:
-    - [0x280000, data] # addresses
-    - [0x285270, data] # strings
+    - [0x280000, bin] # addresses
+    - [0x285270, bin] # strings
     - [0x28F4E0, bin]
 
   - [0x28F4F0, bin]

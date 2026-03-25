@@ -15,8 +15,6 @@ u32 osLogFloat(f32 arg0);
 void errstop(const char *fmt, ...);
 void osSyncPrintf(const char *fmt, ...);
 
-extern u8 D_8009E070[];
-
 void osSyncPrintf(const char *fmt, ...) {
 
 }
@@ -70,7 +68,8 @@ void idle(void* arg) {
 void boot(void) {
     resetwatch();
     osUnmapTLBAll();
-    hmemset(D_80095880, 0, D_800AE350 - D_80095880);
+    // TODO: This is clearing some .data/.rodata area, not specifically this symbol
+    hmemset(gSecureCallArr, 0, (u8*)D_800AE350 - (u8*)gSecureCallArr);
     hmemset(D_800B2350, 0, D_800DBCA0 - D_800B2350);
     hmemset(0x80250000, 0, 0x80000);
     osWritebackDCacheAll();

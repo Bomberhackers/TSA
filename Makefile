@@ -152,6 +152,7 @@ $(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(DATA_DIRS) $(COMPRESSED_DIRS) $(MAP_DIRS
 #$(DECOMP_BM64TSA_FILTERED): CC := $(ASMPROC) $(ASMPROC_FLAGS) $(CC) -- $(AS) $(ASFLAGS) --
 
 build/src/memutil.c.o: OPTFLAGS := -O3
+build/src/file.c.o: OPTFLAGS := -O3
 
 ######################## Build #############################
 

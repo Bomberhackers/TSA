@@ -20,12 +20,31 @@ extern s32 D_8009E2F0;
 extern s32 D_800A41F0;
 extern s32 D_802D0000;
 extern s32 D_80000300;
-extern u8 D_80095880[];
+extern u32 gSecureCallArr[];
 extern OSThread D_80095D10;
 extern s32 D_80099EC0;
 extern u8 D_800AE350[];
 extern u8 D_800B2350[];
 extern u8 D_800DBCA0[];
 extern s32 D_8008C6A8;
+
+extern void *D_8009E074;
+extern s32 D_8009E078;
+extern s32 D_8008C788;
+
+extern s32 D_8008C784;
+extern s32 D_8009E07C;
+extern s32 D_8009E080;
+extern s32 D_800EE2C0[];
+extern u8 D_800EEB18[]; // current file buffer
+extern s32 D_8009E07C;
+extern u32 D_8009E070;
+extern u32 D_8008C790;
+extern s32 D_8008C78C;
+extern s32 D_8008C780;
+extern s32 D_800EEAD8;
+extern s32 D_800EEAEC;
+extern s32 D_800EEB00;
+extern s32 D_800EEB14;
 
 #endif // _VARIABLES_H_

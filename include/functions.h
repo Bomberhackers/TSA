@@ -60,5 +60,7 @@ extern s32 viewInit();                                       /* extern */
 extern s32 zerojumpinit();                                   /* extern */
 extern s32 zjSetVec(s32, s32*);                                  /* extern */
 extern s32 znzInit();                                        /* extern */
+extern s32 dmaWrite(s32, s32, void*);                       /* extern */
+extern s32 dmaRead(s32, s32, s32);
 
 #endif // _FUNCTIONS_H_
