@@ -39,12 +39,14 @@ segments:
     vram: 0x80000400
     subsegments:
     - [0x1000, hasm, entry_us] # bootloader
-    - [0x1050, asm]
-    - [0x10D0, asm]
-    - [0x13F0, asm]
-    - [0x1BA0, asm]
-    - [0x1D90, asm]
+    - [0x1050, asm, zero_jump]
+    - [0x10D0, asm, dma]
+    - [0x13F0, asm, scheduler]
+    - [0x1BA0, asm, main]
+    - [0x1D90, asm, gamemain]
+    - [0x21A0, asm, memutil]
     - [0x22B0, asm]
+    - [0x2C50, asm]
     - [0x2DE0, asm]
     - [0x3330, asm]
     - [0x34F0, asm]
