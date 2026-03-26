@@ -2,17 +2,14 @@
 #                Baku Bomberman 2 (JP)  Makefile                #
 #################################################################
 
-BASEROM = baserom.z64
+VERSION ?= jp
+
+BASEROM = baserom.$(VERSION).z64
 TARGET = bm64tsa
 NON_MATCHING ?= 0
 RUN_CC_CHECK ?= 1
 WERROR ?= 0
 PYTHON ?= python3
-
-# Fail early if baserom does not exist
-ifeq ($(wildcard $(BASEROM)),)
-$(error Baserom `$(BASEROM)' not found.)
-endif
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
@@ -61,8 +58,8 @@ DECOMP_C_OBJS := $(filter %.c.o,$(filter-out $(BUILD_DIR)/src/libultra%,$(O_FILE
 DECOMP_BM64TSA := $(DECOMP_C_OBJS)
 DEP_FILES := $(O_FILES:.o=.d) $(DECOMP_C_OBJS:.o=.asmproc.d)
 
-SPLAT_YAML := splat.yaml
-SPLAT = $(PYTHON) tools/n64splat/split.py $(SPLAT_YAML)
+SPLAT = $(PYTHON) tools/n64splat/split.py
+SPLAT_YAML := $(TARGET).$(VERSION).yaml
 
 ##################### Compiler Options #######################
 findcmd = $(shell type $(1) >/dev/null 2>/dev/null; echo $$?)
@@ -95,6 +92,7 @@ CC = tools/ido_recomp/$(HOST_OS)/5.3/cc
 CC_OLD = tools/ido_recomp/$(HOST_OS)/5.3/cc
 ASMPROC = $(PYTHON) tools/asmproc/build.py
 ASMPROC_FLAGS :=
+CAT := cat
 
 # unverified
 MIPS_VERSION := -mips1
@@ -138,7 +136,7 @@ ASFLAGS = -EB -mtune=vr4300 -march=vr4300 $(IINCS) -32
 # we support Microsoft extensions such as anonymous structs, which the compiler does support but warns for their usage. Surpress the warnings with -woff.
 CFLAGS  = -G 0 -non_shared -Xfullwarn -Xcpluscomm $(IINCS) -Wab,-r4300_mul $(CDEFS) -woff 649,838,712,807 $(MIPS_VERSION)
 
-LDFLAGS = -T undefined_syms_auto.txt -T undefined_funcs_auto.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/$(TARGET).map --no-check-sections
+LDFLAGS = -T linker_scripts/$(VERSION)/auto/undefined_syms_auto.ld -T linker_scripts/$(VERSION)/auto/undefined_funcs_auto.ld -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/$(TARGET).map --no-check-sections
 
 
 ######################## Targets #############################
@@ -181,7 +179,9 @@ submodules:
 	git submodule update --init --recursive
 
 split:
-	rm -rf $(DATA_DIRS) $(ASM_DIRS) && $(PYTHON) ./tools/n64splat/split.py $(SPLAT_YAML)
+	rm -rf $(DATA_DIRS) $(ASM_DIRS)
+	$(CAT) yamls/$(VERSION)/main.yaml > $(SPLAT_YAML)
+	$(PYTHON) ./tools/n64splat/split.py $(SPLAT_YAML)
 
 setup: distclean submodules split
 

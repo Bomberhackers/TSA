@@ -3,14 +3,20 @@ basename: bm64tsa
 sha1: 179cab7426755f14bd3f4999f3789eb6d7af64c4
 options:
   compiler: IDO
-  symbol_addrs_path: tools/symbol_addrs.txt
-  target_path: baserom.z64
+  symbol_addrs_path: linker_scripts/jp/symbol_addrs.txt
+  target_path: baserom.jp.z64
   basename: bm64tsa
   base_path: .
   ld_script_path: bm64tsa.ld
   platform: n64
   detect_redundant_function_end: true
   hasm_in_src_path: True
+  asm_path: asm
+  src_path: src
+  asset_path: assets
+  build_path: build
+  undefined_funcs_auto_path: linker_scripts/jp/auto/undefined_funcs_auto.ld
+  undefined_syms_auto_path: linker_scripts/jp/auto/undefined_syms_auto.ld
 segments:
   - name: header
     type: header
