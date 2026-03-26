@@ -25,9 +25,9 @@ endif
 BUILD_DIR := build/$(VERSION)
 SRC_DIR := src$(VERSION)
 ROM := $(TARGET).$(VERSION).z64
-ELF := $(BUILD_DIR)/$(TARGET).elf
+ELF := $(BUILD_DIR)/$(TARGET).$(VERSION).elf
 LD_SCRIPT := $(TARGET).ld
-LD_MAP := $(BUILD_DIR)/$(TARGET).map
+LD_MAP := $(BUILD_DIR)/$(TARGET).$(VERSION).map
 ASM_DIR := asm$(VERSION)
 ASM_DIRS := $(ASM_DIR) $(ASM_DIR)/data $(ASM_DIR)/libultra $(ASM_DIR)/libultra/os $(ASM_DIR)/libultra/io $(ASM_DIR)/libultra/gu $(ASM_DIR)/libultra/libc $(ASM_DIR)/libultra/al $(ASM_DIR)/libultra/audio $(ASM_DIR)/data/libultra $(ASM_DIR)/data/libultra/gu $(ASM_DIR)/data/libultra/os
 DATA_DIRS := bin$(VERSION) assets$(VERSION)
@@ -138,7 +138,7 @@ ASFLAGS = -EB -mtune=vr4300 -march=vr4300 $(IINCS) -32
 # we support Microsoft extensions such as anonymous structs, which the compiler does support but warns for their usage. Surpress the warnings with -woff.
 CFLAGS  = -G 0 -non_shared -Xfullwarn -Xcpluscomm $(IINCS) -Wab,-r4300_mul $(CDEFS) -woff 649,838,712,807 $(MIPS_VERSION)
 
-LDFLAGS = -T linker_scripts/$(VERSION)/auto/undefined_syms_auto.ld -T linker_scripts/$(VERSION)/auto/undefined_funcs_auto.ld -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/$(TARGET).map --no-check-sections
+LDFLAGS = -T linker_scripts/$(VERSION)/auto/undefined_syms_auto.ld -T linker_scripts/$(VERSION)/auto/undefined_funcs_auto.ld -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(LD_MAP) --no-check-sections
 
 
 ######################## Targets #############################
@@ -185,7 +185,7 @@ split:
 	$(CAT) yamls/$(VERSION)/main.yaml > $(SPLAT_YAML)
 	$(PYTHON) ./tools/n64splat/split.py $(SPLAT_YAML)
 
-setup: distclean submodules split
+setup: submodules split
 
 #==============================================================================#
 # Texture Generation                                                           #
@@ -204,10 +204,10 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	@mkdir -p $(shell dirname $@)
 	$(CPP) -P -DBUILD_DIR=$(BUILD_DIR) -o $@ $<
 
-$(BUILD_DIR)/$(TARGET).bin: $(BUILD_DIR)/$(TARGET).elf
+$(BUILD_DIR)/$(TARGET).$(VERSION).bin: $(ELF)
 	$(OBJCOPY) $< $@ -O binary
 
-$(BUILD_DIR)/$(TARGET).elf: $(PNG_INC_FILES) $(O_FILES) $(BUILD_DIR)/$(LD_SCRIPT)
+$(ELF): $(PNG_INC_FILES) $(O_FILES) $(BUILD_DIR)/$(LD_SCRIPT)
 	@$(LD) $(LDFLAGS) -o $@
 
 $(BUILD_DIR)/%.c.o: %.c
@@ -231,7 +231,7 @@ $(BUILD_DIR)/%.bin.o: %.bin
 	$(LD) -r -b binary -o $@ $<
 
 # final z64 updates checksum
-$(BUILD_DIR)/$(ROM): $(BUILD_DIR)/$(TARGET).bin
+$(BUILD_DIR)/$(ROM): $(BUILD_DIR)/$(TARGET).$(VERSION).bin
 	@cp $< $@
 	$(N64CRC) $@
 
