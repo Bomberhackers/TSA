@@ -23,7 +23,7 @@ else
 endif
 
 BUILD_DIR := build
-ROM := $(TARGET).z64
+ROM := $(TARGET).$(VERSION).z64
 ELF := $(BUILD_DIR)/$(TARGET).elf
 LD_SCRIPT := $(TARGET).ld
 LD_MAP := $(BUILD_DIR)/$(TARGET).map
@@ -160,7 +160,7 @@ build/src/fblock.c.o: OPTFLAGS := -O3
 
 default: all
 
-LD_SCRIPT = $(TARGET).ld
+LD_SCRIPT = $(TARGET).$(VERSION).ld
 
 all: $(BUILD_DIR) $(BUILD_DIR)/$(ROM) verify tools
 
@@ -234,7 +234,7 @@ $(BUILD_DIR)/$(ROM): $(BUILD_DIR)/$(TARGET).bin
 	$(N64CRC) $@
 
 verify: $(BUILD_DIR)/$(ROM)
-	md5sum -c checksum.md5
+	md5sum -c $(TARGET).$(VERSION).md5
 
 ## Order-only prerequisites
 # These ensure e.g. the PNG_INC_FILES are built before the O_FILES.

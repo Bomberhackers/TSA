@@ -7,7 +7,7 @@ options:
   target_path: baserom.jp.z64
   basename: bm64tsa
   base_path: .
-  ld_script_path: bm64tsa.ld
+  ld_script_path: bm64tsa.jp.ld
   platform: n64
   detect_redundant_function_end: true
   hasm_in_src_path: True
@@ -38,7 +38,7 @@ segments:
     start: 0x1000
     vram: 0x80000400
     subsegments:
-    - [0x1000, hasm, entry] # bootloader
+    - [0x1000, hasm, entry_jp] # bootloader
     - [0x1050, c, zero_jump]
     - [0x10D0, c, dma]
     - [0x13F0, asm, scheduler] 

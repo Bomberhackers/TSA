@@ -1,9 +1,10 @@
-# Baku Bomberman 2 (JP)
-A WIP decomp of Baku Bomberman 2 (JP).
+# Bomberman 64: The Second Attack!
+A WIP decomp of Baku Bomberman 2 (JP)/Bomberman 64: The Second Attack!.
 
 It builds the following ROM(s):
 
-* bm64tsa.z64: `md5: ca956015b6820dcff1c814f3532e18b1`
+* bm64tsa.jp.z64: `md5: ca956015b6820dcff1c814f3532e18b1`
+* bm64tsa.us.z64: `md5: aec1fdb0f1caad86c9f457989a4ce482`
 
 Note: To use this repository, you must already have a rom for the game.
 
@@ -27,6 +28,6 @@ python3 -m pip install -r requirements.txt
 ```
 
 # To use
-1. Place the JP Baku Bomberman 2 ROM into the root of the repository as "baserom.z64".
-2. Set up tools and extract the rom: `make setup`
-3. Re-assemble the rom: `make`
+1. Place the version you want to build into the root of the repository as "baserom.(version).z64", for example, baserom.jp.z64.
+2. Set up tools and extract the rom: `make setup VERSION=jp` for JP and US for US.
+3. Re-assemble the rom: `make VERSION=jp`

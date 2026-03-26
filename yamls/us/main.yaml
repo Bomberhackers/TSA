@@ -1,0 +1,267 @@
+name: Bomberman 64 The Second Attack! (USA)
+basename: bm64tsa
+sha1: 66b1fd763793ecc6e03aa6c5d023df8de5351b9e
+options:
+  compiler: IDO
+  symbol_addrs_path: linker_scripts/us/symbol_addrs.txt
+  target_path: baserom.us.z64
+  basename: bm64tsa
+  base_path: .
+  ld_script_path: bm64tsa.us.ld
+  platform: n64
+  detect_redundant_function_end: true
+  hasm_in_src_path: True
+  asm_path: asm
+  src_path: src
+  asset_path: assets
+  build_path: build
+  undefined_funcs_auto_path: linker_scripts/us/auto/undefined_funcs_auto.ld
+  undefined_syms_auto_path: linker_scripts/us/auto/undefined_syms_auto.ld
+segments:
+  - name: header
+    type: header
+    start: 0x00
+    vram: 0
+    subsegments:
+    - [0x0000, header, header]
+  - name: boot
+    type: code
+    start: 0x0040
+    vram: 0xA4000040
+    exclusive_ram_id: boot
+    subsegments:
+    - [0x0040, asm, boot]
+    - [0x0B70, bin, bootcode_font]
+  - name: boot_code
+    type: code
+    bss_size: 0x0 # unknown
+    start: 0x1000
+    vram: 0x80000400
+    subsegments:
+    - [0x1000, hasm, entry_us] # bootloader
+    - [0x1050, asm]
+    - [0x10D0, asm]
+    - [0x13F0, asm]
+    - [0x1BA0, asm]
+    - [0x1D90, asm]
+    - [0x22B0, asm]
+    - [0x2DE0, asm]
+    - [0x3330, asm]
+    - [0x34F0, asm]
+    - [0x3F50, asm]
+    - [0x4CA0, asm]
+    - [0x56D0, asm]
+    - [0x5AB0, asm]
+    - [0x62E0, asm]
+    - [0x6D70, asm]
+    - [0x7430, asm]
+    - [0x74A0, asm]
+    - [0x7A70, asm]
+    - [0x7E40, asm]
+    - [0x8A70, asm]
+    - [0x9C70, asm]
+    - [0xA750, asm]
+    - [0xACB0, asm]
+    - [0xD140, asm]
+    - [0xD470, asm]
+    - [0xE330, asm]
+    - [0x102B0, asm]
+    - [0x11330, asm]
+    - [0x136F0, asm]
+    - [0x15510, asm]
+    - [0x177E0, asm]
+    - [0x1C160, asm]
+    - [0x1DF00, asm]
+    - [0x27140, asm]
+    - [0x27C30, asm]
+    - [0x28980, asm]
+    - [0x2AFD0, asm]
+    - [0x30F70, asm]
+    - [0x3EF10, asm]
+    - [0x3F190, asm]
+    - [0x3FD90, asm]
+    - [0x40D70, asm]
+    - [0x48BE0, asm]
+    - [0x48C10, asm]
+    - [0x49080, asm]
+    - [0x51A60, asm]
+    - [0x57290, asm]
+    - [0x577F0, asm]
+    - [0x5A210, asm]
+    - [0x5D390, asm]
+    - [0x5D810, asm]
+    - [0x749E0, asm]
+    - [0x74AC0, asm]
+    - [0x74B10, asm]
+    - [0x74BC0, asm]
+    - [0x74BD0, asm]
+    - [0x75B10, asm]
+    - [0x75C20, asm]
+    - [0x75CD0, asm]
+    - [0x75D90, asm]
+    - [0x75F30, asm]
+    - [0x76070, asm]
+    - [0x76130, asm]
+    - [0x76180, asm]
+    - [0x76200, asm]
+    - [0x762B0, asm]
+    - [0x76330, asm]
+    - [0x76640, asm]
+    - [0x766A0, asm]
+    - [0x76710, asm]
+    - [0x76770, asm]
+    - [0x76830, asm]
+    - [0x76980, asm]
+    - [0x76CC0, asm]
+    - [0x76CF0, asm]
+    - [0x77030, asm]
+    - [0x77080, asm]
+    - [0x773D0, asm]
+    - [0x77530, asm]
+    - [0x775C0, asm]
+    - [0x77630, asm]
+    - [0x77790, asm]
+    - [0x77830, asm]
+    - [0x77B10, asm]
+    - [0x77B70, asm]
+    - [0x77D50, asm]
+    - [0x77DC0, asm]
+    - [0x77E00, asm]
+    - [0x77F10, asm]
+    - [0x77FB0, asm]
+    - [0x782A0, asm]
+    - [0x785B0, asm]
+    - [0x78610, asm]
+    - [0x78740, asm]
+    - [0x788E0, asm]
+    - [0x78AC0, asm]
+    - [0x78DD0, asm]
+    - [0x78FA0, asm]
+    - [0x79420, asm]
+    - [0x79690, asm]
+    - [0x79AE0, asm]
+    - [0x7A1E0, asm]
+    - [0x7A2F0, asm]
+    - [0x7A6C0, asm]
+    - [0x7A9F0, asm]
+    - [0x7AC00, asm]
+    - [0x7AE70, asm]
+    - [0x7B100, asm]
+    - [0x7B110, asm]
+    - [0x7B1B0, asm]
+    - [0x7B240, asm]
+    - [0x7B570, asm]
+    - [0x7B730, asm]
+    - [0x7B830, asm]
+    - [0x7B860, asm]
+    - [0x7B890, asm]
+    - [0x7B8D0, asm]
+    - [0x7CBB0, asm]
+    - [0x7CEA0, asm]
+    - [0x7CEE0, asm]
+    - [0x7DA50, asm]
+    - [0x7DAD0, asm]
+    - [0x7DB60, asm]
+    - [0x7DBD0, asm]
+    - [0x7DCA0, asm]
+    - [0x7DCC0, asm]
+    - [0x7DCE0, asm]
+    - [0x7DD00, asm]
+    - [0x7E460, asm]
+    - [0x7E500, asm]
+    - [0x7E550, asm]
+    - [0x7E5C0, asm]
+    - [0x7E620, asm]
+    - [0x7E680, asm]
+    - [0x7E6E0, asm]
+    - [0x7E740, asm]
+    - [0x7E750, asm]
+    - [0x7E810, asm]
+    - [0x7E840, asm]
+    - [0x7E990, asm]
+    - [0x7EAD0, asm]
+    - [0x7EB70, asm]
+    - [0x7F1F0, asm]
+    - [0x7F380, asm]
+    - [0x7F550, asm]
+    - [0x7F590, asm]
+    - [0x7F670, asm]
+    - [0x7F700, asm]
+    - [0x7F7D0, asm]
+    - [0x808A0, asm]
+    - [0x80DC0, asm]
+    - [0x80DD0, asm]
+    - [0x810D0, asm]
+    - [0x810E0, asm]
+    - [0x810F0, asm]
+    - [0x81120, asm]
+    - [0x811B0, asm]
+    - [0x811E0, asm]
+    - [0x81200, asm]
+    - [0x81260, asm]
+    - [0x812B0, asm]
+    - [0x81310, asm]
+    - [0x815E0, asm]
+    - [0x822C0, asm]
+    - [0x823A0, asm]
+    - [0x82450, asm]
+    - [0x82740, asm]
+    - [0x827C0, asm]
+    - [0x829F0, asm]
+    - [0x83570, asm]
+    - [0x83F20, asm]
+    - [0x84170, asm]
+    - [0x84290, asm]
+    - [0x84400, asm]
+    - [0x846F0, asm]
+    - [0x86080, asm]
+    - [0x863C0, asm]
+    - [0x86490, asm]
+    - [0x86540, asm]
+    - [0x865E0, asm]
+    - [0x86670, asm]
+    - [0x86890, asm]
+    - [0x86930, asm]
+    - [0x869C0, asm]
+    - [0x869D0, asm]
+    - [0x86A90, asm]
+    - [0x86AC0, asm]
+    - [0x87270, asm]
+    - [0x87310, asm]
+    - [0x87F90, asm]
+    - [0x88280, asm]
+    - [0x88F00, asm]
+    - [0x89010, asm]
+    - [0x89130, asm]
+    - [0x89290, asm]
+    - [0x893F0, asm]
+    - [0x89440, asm]
+    - [0x89450, asm]
+    - [0x89480, asm]
+    - [0x89720, asm]
+    - [0x8A860, asm]
+    - [0x8A8F0, asm]
+    - [0x8A910, asm]
+    - [0x8B570, asm]
+    - [0x8B700, asm]
+    - [0x8B7D0, data]
+
+  - name: undumped_overlays
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x100000
+    vram: 0x8D000000 # unknown
+    subsegments:
+    - [0x100000, bin]
+
+    # No idea how they reference static symbols. We are NOT worrying about that right now.
+  - name: map
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x280000
+    vram: 0x803E0000 # unknown
+    subsegments:
+    - [0x280000, bin] # addresses
+
+  - [0x28F4F0, bin]
+  - [0x1000000]
