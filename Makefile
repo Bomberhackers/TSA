@@ -22,14 +22,16 @@ else
   $(error Unsupported host/building OS <$(UNAME_S)>)
 endif
 
-BUILD_DIR := build
+BUILD_DIR := build/$(VERSION)
+SRC_DIR := src$(VERSION)
 ROM := $(TARGET).$(VERSION).z64
 ELF := $(BUILD_DIR)/$(TARGET).elf
 LD_SCRIPT := $(TARGET).ld
 LD_MAP := $(BUILD_DIR)/$(TARGET).map
-ASM_DIRS := asm asm/data asm/libultra asm/libultra/os asm/libultra/io asm/libultra/gu asm/libultra/libc asm/libultra/al asm/libultra/audio asm/data/libultra asm/data/libultra/gu asm/data/libultra/os
-DATA_DIRS := bin assets
-SRC_DIRS := $(shell find src -type d)
+ASM_DIR := asm$(VERSION)
+ASM_DIRS := $(ASM_DIR) $(ASM_DIR)/data $(ASM_DIR)/libultra $(ASM_DIR)/libultra/os $(ASM_DIR)/libultra/io $(ASM_DIR)/libultra/gu $(ASM_DIR)/libultra/libc $(ASM_DIR)/libultra/al $(ASM_DIR)/libultra/audio $(ASM_DIR)/data/libultra $(ASM_DIR)/data/libultra/gu $(ASM_DIR)/data/libultra/os
+DATA_DIRS := bin$(VERSION) assets$(VERSION)
+SRC_DIRS := $(shell find $(SRC_DIR) -type d)
 
 ########## Make tools ##########
 
@@ -54,7 +56,7 @@ O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.c.o)) \
            $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.s.o)) \
            $(foreach file,$(DATA_FILES),$(BUILD_DIR)/$(file:.bin=.bin.o)) \
 
-DECOMP_C_OBJS := $(filter %.c.o,$(filter-out $(BUILD_DIR)/src/libultra%,$(O_FILES)))
+DECOMP_C_OBJS := $(filter %.c.o,$(filter-out $(BUILD_DIR)/$(SRC_DIR)/libultra%,$(O_FILES)))
 DECOMP_BM64TSA := $(DECOMP_C_OBJS)
 DEP_FILES := $(O_FILES:.o=.d) $(DECOMP_C_OBJS:.o=.asmproc.d)
 
@@ -103,7 +105,7 @@ OPTFLAGS := -O2
 OBJDUMP_FLAGS := -d -r -z -Mreg-names=32
 
 # include locations
-INC_DIRS := include include/PR include/audio include/ido . src/boot/malloc
+INC_DIRS := include include/PR include/audio include/ido . $(SRC_DIR)/boot/malloc
 IINCS := $(foreach d,$(INC_DIRS),-I$d)
 # defines for SGI IDO
 CDEFS := -D_LANGUAGE_C -DF3DEX_GBI_2
@@ -141,7 +143,7 @@ LDFLAGS = -T linker_scripts/$(VERSION)/auto/undefined_syms_auto.ld -T linker_scr
 
 ######################## Targets #############################
 
-$(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(DATA_DIRS) $(COMPRESSED_DIRS) $(MAP_DIRS) $(BGM_DIRS),$(shell mkdir -p build/$(dir)))
+$(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(DATA_DIRS) $(COMPRESSED_DIRS) $(MAP_DIRS) $(BGM_DIRS),$(shell mkdir -p build/$(VERSION)/$(dir)))
 
 # Get a list of files which only have GLOBAL_ASM in them... via this piece of work.
 #DECOMP_BM64TSA_FILTERED := $(addprefix build/,$(addsuffix .o,$(foreach file,$(patsubst build/src/%,src/%,$(basename $(DECOMP_BM64TSA))),$(if $(shell grep GLOBAL_ASM <${file}),${file}))))
@@ -149,12 +151,12 @@ $(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(DATA_DIRS) $(COMPRESSED_DIRS) $(MAP_DIRS
 # run ASM-processor on non-libultra source files which have GLOBAL_ASM in them.
 #$(DECOMP_BM64TSA_FILTERED): CC := $(ASMPROC) $(ASMPROC_FLAGS) $(CC) -- $(AS) $(ASFLAGS) --
 
-build/src/memutil.c.o: OPTFLAGS := -O3
-build/src/file.c.o: OPTFLAGS := -O3
-build/src/dma.c.o: OPTFLAGS := -O3
-build/src/decode.c.o: OPTFLAGS := -O3
-build/src/zero_jump.c.o: OPTFLAGS := -O3
-build/src/fblock.c.o: OPTFLAGS := -O3
+$(BUILD_DIR)/$(SRC_DIR)/memutil.c.o: OPTFLAGS := -O3
+$(BUILD_DIR)/$(SRC_DIR)/file.c.o: OPTFLAGS := -O3
+$(BUILD_DIR)/$(SRC_DIR)/dma.c.o: OPTFLAGS := -O3
+$(BUILD_DIR)/$(SRC_DIR)/decode.c.o: OPTFLAGS := -O3
+$(BUILD_DIR)/$(SRC_DIR)/zero_jump.c.o: OPTFLAGS := -O3
+$(BUILD_DIR)/$(SRC_DIR)/fblock.c.o: OPTFLAGS := -O3
 
 ######################## Build #############################
 
@@ -168,11 +170,11 @@ tools:
 	make -C tools
 
 distclean:
-	rm -rf asm bin assets $(BUILD_DIR) undefined_syms_auto.txt undefined_funcs_auto.txt
+	rm -rf asmjp asmus binjp binus assetsjp assetsus build undefined_syms_auto.txt undefined_funcs_auto.txt
 	make -C tools clean
 
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -rf build
 	make -C tools clean
 
 submodules:
@@ -212,12 +214,12 @@ $(BUILD_DIR)/%.c.o: %.c
 	$(CC_CHECK) $(CHECK_FLAGS) $(CHECK_WARNINGS) -MMD -MP -MT $@ -MF $(@:.o=.d) $<
 	$(CC) -c $(CFLAGS) $(OPTFLAGS) -o $@ $<
 
-$(BUILD_DIR)/src/libultra/libc/ll.c.o: src/libultra/libc/ll.c
+$(BUILD_DIR)/$(SRC_DIR)/libultra/libc/ll.c.o: $(SRC_DIR)/libultra/libc/ll.c
 	$(CC) -c $(CFLAGS) $(OPTFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.s)
 
-$(BUILD_DIR)/src/libultra/libc/llcvt.c.o: src/libultra/libc/llcvt.c
+$(BUILD_DIR)/$(SRC_DIR)/libultra/libc/llcvt.c.o: $(SRC_DIR)/libultra/libc/llcvt.c
 	$(CC) -c $(CFLAGS) $(OPTFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.s)

@@ -11,10 +11,10 @@ options:
   platform: n64
   detect_redundant_function_end: true
   hasm_in_src_path: True
-  asm_path: asm
-  src_path: src
-  asset_path: assets
-  build_path: build
+  asm_path: asmus
+  src_path: srcus
+  asset_path: assetsus
+  build_path: build/us
   undefined_funcs_auto_path: linker_scripts/us/auto/undefined_funcs_auto.ld
   undefined_syms_auto_path: linker_scripts/us/auto/undefined_syms_auto.ld
 segments:
