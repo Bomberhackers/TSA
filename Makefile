@@ -34,6 +34,62 @@ ASM_DIRS := $(ASM_DIR) $(ASM_DIR)/data $(ASM_DIR)/libultra $(ASM_DIR)/libultra/o
 DATA_DIRS := bin$(VERSION) assets$(VERSION)
 SRC_DIRS := $(shell find $(SRC_DIR) -type d)
 
+OVL_DIRS := overlays \
+	    overlays/actor \
+	    overlays/actor/main \
+	    overlays/item  \
+	    overlays/item/main \
+	    overlays/coll  \
+	    overlays/coll/main \
+	    overlays/mobj  \
+	    overlays/mobj/main \
+	    overlays/blast \
+	    overlays/blast/flame \
+	    overlays/blast/ice \
+	    overlays/blast/wind \
+	    overlays/blast/ground \
+	    overlays/blast/elec \
+	    overlays/blast/light \
+	    overlays/blast/dark \
+	    overlays/enemy \
+	    overlays/enemy/world1 \
+	    overlays/enemy/world2 \
+	    overlays/enemy/world3 \
+	    overlays/enemy/world4 \
+	    overlays/enemy/world5 \
+	    overlays/enemy/world6 \
+	    overlays/enemy/world7 \
+	    overlays/enemy/world8 \
+	    overlays/enemy/battle \
+	    overlays/boss \
+	    overlays/boss/demon \
+	    overlays/boss/devil \
+	    overlays/boss/angel \
+	    overlays/menu \
+	    overlays/menu/card \
+	    overlays/menu/title \
+	    overlays/menu/file \
+	    overlays/menu/battle \
+	    overlays/menu/custom \
+	    overlays/menu/stage \
+	    overlays/demo \
+	    overlays/demo/story \
+	    overlays/demo/guide \
+	    overlays/stage \
+	    overlays/stage/world1 \
+	    overlays/stage/world2 \
+	    overlays/stage/world3 \
+	    overlays/stage/world4 \
+	    overlays/stage/world5 \
+	    overlays/stage/world6 \
+	    overlays/stage/world7 \
+	    overlays/stage/world8
+
+OVL_ASM_DIRS := $(addprefix $(ASM_DIR)/,$(OVL_DIRS))
+OVL_DATA_DIRS := $(addprefix $(ASM_DIR)/data/,$(OVL_DIRS))
+ASM_DIRS += $(OVL_ASM_DIRS)
+ASM_DIRS += $(OVL_DATA_DIRS)
+
 ########## Make tools ##########
 
 DUMMY != make -s -C tools >&2 || echo FAIL
@@ -197,7 +253,6 @@ decompress:
 	$(BM64TSADECOMPRESS) $(BASEROM) $(BASEROM_DECOMPRESSED) assets$(VERSION)
 
 split:
-	rm -rf $(DATA_DIRS) $(ASM_DIRS)
 	$(CAT) yamls/$(VERSION)/main.yaml > $(SPLAT_YAML)
 	$(PYTHON) ./tools/n64splat/split.py $(SPLAT_YAML)
 

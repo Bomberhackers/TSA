@@ -20,6 +20,7 @@ options:
 segments:
   - name: header
     type: header
+    exclusive_ram_id: code
     start: 0x00
     vram: 0
     subsegments:
@@ -28,11 +29,11 @@ segments:
     type: code
     start: 0x0040
     vram: 0xA4000040
-    exclusive_ram_id: boot
     subsegments:
     - [0x0040, asm, boot]
     - [0x0B70, bin, bootcode_font]
   - name: boot_code
+    exclusive_ram_id: code
     type: code
     bss_size: 0x0 # unknown
     start: 0x1000
@@ -283,6 +284,7 @@ segments:
     - [0x93680, rodata] # rest of rodata
 
   - name: unk_rsp
+    exclusive_ram_id: code
     type: data
     bss_size: 0x0 # unknown
     start: 0x95A10
@@ -291,6 +293,7 @@ segments:
     - [0x95A10, bin] # addresses and RSP
 
   - name: zerojump
+    exclusive_ram_id: code
     type: code
     bss_size: 0x0 # unknown
     start: 0x96480
@@ -300,6 +303,7 @@ segments:
     - [0x96520, data, zerojump_func]
 
   - name: zerojump_after
+    exclusive_ram_id: code
     type: bin
     bss_size: 0x0
     start: 0x965B0
@@ -308,6 +312,7 @@ segments:
     - [0x965B0, bin] # addresses
 
   - name: ovl_sizes
+    exclusive_ram_id: code
     type: data
     bss_size: 0x0 # unknown
     start: 0xFF000
@@ -317,6 +322,7 @@ segments:
 
     # TODO
   - name: overlays
+    exclusive_ram_id: code
     type: data
     bss_size: 0x0 # unknown
     start: 0x100000
@@ -335,5 +341,584 @@ segments:
     - [0x285270, bin] # strings
     - [0x28F4E0, bin]
 
-  - [0x28F4F0, bin]
+  - name: ovl_actor_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x1000000
+    vram: 0x80008000
+    symbol_name_format: ovl_actor_header_$VRAM
+    subsegments:
+    - [0x1000000, bin]
+
+  - name: ovl_actor_main
+    exclusive_ram_id: actor
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/actor/main
+    bss_size: 0x0 # unknown
+    start: 0x1000010
+    vram: 0x40000000
+    symbol_name_format: ovl_actor_main_$VRAM
+    subsegments:
+    - [0x1000010, asm]
+    - [0x101CED0, data]
+
+  - name: ovl_item_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x10201C0
+    vram: 0x80008000
+    symbol_name_format: ovl_item_header_$VRAM
+    subsegments:
+    - [0x10201C0, bin]
+
+  - name: ovl_item_main
+    exclusive_ram_id: item
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/item/main
+    bss_size: 0x0 # unknown
+    start: 0x10201D0
+    vram: 0x41000000
+    symbol_name_format: ovl_item_main_$VRAM
+    subsegments:
+    - [0x10201D0, asm]
+
+  - name: ovl_coll_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x10273B0
+    vram: 0x80008000
+    symbol_name_format: ovl_coll_header_$VRAM
+    subsegments:
+    - [0x10273B0, bin]
+
+  - name: ovl_coll_main
+    exclusive_ram_id: coll
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/coll/main
+    bss_size: 0x0 # unknown
+    start: 0x10273C0
+    vram: 0x44000000
+    symbol_name_format: ovl_coll_main_$VRAM
+    subsegments:
+    - [0x10273C0, asm]
+
+  - name: ovl_mobj_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x102E0E0
+    vram: 0x80008000
+    symbol_name_format: ovl_mobj_header_$VRAM
+    subsegments:
+    - [0x102E0E0, bin]
+
+  - name: ovl_mobj_main
+    exclusive_ram_id: mobj
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/mobj/main
+    bss_size: 0x0 # unknown
+    start: 0x102E0F0
+    vram: 0x45000000
+    symbol_name_format: ovl_mobj_main_$VRAM
+    subsegments:
+    - [0x102E0F0, asm]
+    - [0x103D9E0, data]
+
+  - name: ovl_blast_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x1040DE0
+    vram: 0x80008000
+    symbol_name_format: ovl_blast_header_$VRAM
+    subsegments:
+    - [0x1040DE0, bin]
+
+  - name: ovl_blast_flame
+    exclusive_ram_id: blast
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/blast/flame
+    bss_size: 0x0 # unknown
+    start: 0x1040E00
+    vram: 0x42000000
+    symbol_name_format: ovl_blast_flame_$VRAM
+    subsegments:
+    - [0x1040E00, asm]
+
+  - name: ovl_blast_ice
+    exclusive_ram_id: blast
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/blast/ice
+    bss_size: 0x0 # unknown
+    start: 0x1044460
+    vram: 0x42000000
+    symbol_name_format: ovl_blast_ice_$VRAM
+    subsegments:
+    - [0x1044460, asm]
+
+  - name: ovl_blast_wind
+    exclusive_ram_id: blast
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/blast/wind
+    bss_size: 0x0 # unknown
+    start: 0x1048420
+    vram: 0x42000000
+    symbol_name_format: ovl_blast_wind_$VRAM
+    subsegments:
+    - [0x1048420, asm]
+
+  - name: ovl_blast_ground
+    exclusive_ram_id: blast
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/blast/ground
+    bss_size: 0x0 # unknown
+    start: 0x104C8D0
+    vram: 0x42000000
+    symbol_name_format: ovl_blast_ground_$VRAM
+    subsegments:
+    - [0x104C8D0, asm]
+
+  - name: ovl_blast_elec
+    exclusive_ram_id: blast
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/blast/elec
+    bss_size: 0x0 # unknown
+    start: 0x1050FE0
+    vram: 0x42000000
+    symbol_name_format: ovl_blast_elec_$VRAM
+    subsegments:
+    - [0x1050FE0, asm]
+
+  - name: ovl_blast_light
+    exclusive_ram_id: blast
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/blast/light
+    bss_size: 0x0 # unknown
+    start: 0x1055440
+    vram: 0x42000000
+    symbol_name_format: ovl_blast_light_$VRAM
+    subsegments:
+    - [0x1055440, asm]
+
+  - name: ovl_blast_dark
+    exclusive_ram_id: blast
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/blast/dark
+    bss_size: 0x0 # unknown
+    start: 0x10596F0
+    vram: 0x42000000
+    symbol_name_format: ovl_blast_dark_$VRAM
+    subsegments:
+    - [0x10596F0, asm]
+
+  - name: ovl_enemy_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x105DE20
+    vram: 0x80008000
+    symbol_name_format: ovl_enemy_header_$VRAM
+    subsegments:
+    - [0x105DE20, bin]
+
+  - name: ovl_enemy_world1
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/enemy/world1
+    bss_size: 0x0 # unknown
+    start: 0x105DE40
+    vram: 0x43000000
+    symbol_name_format: ovl_enemy_world1_$VRAM
+    subsegments:
+    - [0x105DE40, asm]
+
+  - name: ovl_enemy_world2
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/enemy/world2
+    bss_size: 0x0 # unknown
+    start: 0x10685C0
+    vram: 0x43000000
+    symbol_name_format: ovl_enemy_world2_$VRAM
+    subsegments:
+    - [0x10685C0, asm]
+
+  - name: ovl_enemy_world3
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/enemy/world3
+    bss_size: 0x0 # unknown
+    start: 0x1072EE0
+    vram: 0x43000000
+    symbol_name_format: ovl_enemy_world3_$VRAM
+    subsegments:
+    - [0x1072EE0, asm]
+
+  - name: ovl_enemy_world4
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/enemy/world4
+    bss_size: 0x0 # unknown
+    start: 0x107D4F0
+    vram: 0x43000000
+    symbol_name_format: ovl_enemy_world4_$VRAM
+    subsegments:
+    - [0x107D4F0, asm]
+
+  - name: ovl_enemy_world5
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/enemy/world5
+    bss_size: 0x0 # unknown
+    start: 0x1087480
+    vram: 0x43000000
+    symbol_name_format: ovl_enemy_world5_$VRAM
+    subsegments:
+    - [0x1087480, asm]
+
+  - name: ovl_enemy_world6
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/enemy/world6
+    bss_size: 0x0 # unknown
+    start: 0x1091700
+    vram: 0x43000000
+    symbol_name_format: ovl_enemy_world6_$VRAM
+    subsegments:
+    - [0x1091700, asm]
+
+  - name: ovl_enemy_world7
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/enemy/world7
+    bss_size: 0x0 # unknown
+    start: 0x109BBE0
+    vram: 0x43000000
+    symbol_name_format: ovl_enemy_world7_$VRAM
+    subsegments:
+    - [0x109BBE0, asm]
+
+  - name: ovl_enemy_world8
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/enemy/world8
+    bss_size: 0x0 # unknown
+    start: 0x10A5E70
+    vram: 0x43000000
+    symbol_name_format: ovl_enemy_world8_$VRAM
+    subsegments:
+    - [0x10A5E70, asm]
+
+  - name: ovl_enemy_battle
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/enemy/battle
+    bss_size: 0x0 # unknown
+    start: 0x10B0AE0
+    vram: 0x43000000
+    symbol_name_format: ovl_enemy_battle_$VRAM
+    subsegments:
+    - [0x10B0AE0, asm]
+
+  - name: ovl_boss_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x10BA380
+    vram: 0x80008000
+    symbol_name_format: ovl_boss_header_$VRAM
+    subsegments:
+    - [0x10BA380, bin]
+
+  - name: ovl_boss_demon
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/boss/demon
+    bss_size: 0x0 # unknown
+    start: 0x10BA390
+    vram: 0x43000000
+    symbol_name_format: ovl_boss_demon_$VRAM
+    subsegments:
+    - [0x10BA390, asm]
+
+  - name: ovl_boss_devil
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/boss/devil
+    bss_size: 0x0 # unknown
+    start: 0x10C4B80
+    vram: 0x43000000
+    symbol_name_format: ovl_boss_devil_$VRAM
+    subsegments:
+    - [0x10C4B80, asm]
+
+  - name: ovl_boss_angel
+    exclusive_ram_id: enemy
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/boss/angel
+    bss_size: 0x0 # unknown
+    start: 0x10D0320
+    vram: 0x43000000
+    symbol_name_format: ovl_boss_angel_$VRAM
+    subsegments:
+    - [0x10D0320, asm]
+
+  - name: ovl_menu_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x10DC310
+    vram: 0x80008000
+    symbol_name_format: ovl_menu_header_$VRAM
+    subsegments:
+    - [0x10DC310, bin]
+
+  - name: ovl_menu_card
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/menu/card
+    bss_size: 0x0 # unknown
+    start: 0x10DC330
+    vram: 0x60000000
+    symbol_name_format: ovl_menu_card_$VRAM
+    subsegments:
+    - [0x10DC330, asm]
+
+  - name: ovl_menu_title
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/menu/title
+    bss_size: 0x0 # unknown
+    start: 0x10DF1F0
+    vram: 0x60000000
+    symbol_name_format: ovl_menu_title_$VRAM
+    subsegments:
+    - [0x10DF1F0, asm]
+
+  - name: ovl_menu_file
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/menu/file
+    bss_size: 0x0 # unknown
+    start: 0x10E2ED0
+    vram: 0x60000000
+    symbol_name_format: ovl_menu_file_$VRAM
+    subsegments:
+    - [0x10E2ED0, asm]
+
+  - name: ovl_menu_battle
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/menu/battle
+    bss_size: 0x0 # unknown
+    start: 0x10E5C30
+    vram: 0x60000000
+    symbol_name_format: ovl_menu_battle_$VRAM
+    subsegments:
+    - [0x10E5C30, asm]
+
+  - name: ovl_menu_custom
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/menu/custom
+    bss_size: 0x0 # unknown
+    start: 0x10F1670
+    vram: 0x60000000
+    symbol_name_format: ovl_menu_custom_$VRAM
+    subsegments:
+    - [0x10F1670, asm]
+
+  - name: ovl_menu_stage
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/menu/stage
+    bss_size: 0x0 # unknown
+    start: 0x10F6800
+    vram: 0x60000000
+    symbol_name_format: ovl_menu_stage_$VRAM
+    subsegments:
+    - [0x10F6800, asm]
+
+  - name: ovl_demo_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x10FC8C0
+    vram: 0x80008000
+    symbol_name_format: ovl_demo_header_$VRAM
+    subsegments:
+    - [0x10FC8C0, bin]
+
+  - name: ovl_demo_story
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/demo/story
+    bss_size: 0x0 # unknown
+    start: 0x10FC8D0
+    vram: 0x60000000
+    symbol_name_format: ovl_demo_story_$VRAM
+    subsegments:
+    - [0x10FC8D0, asm]
+
+  - name: ovl_demo_guide
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/demo/guide
+    bss_size: 0x0 # unknown
+    start: 0x1104120
+    vram: 0x60000000
+    symbol_name_format: ovl_demo_guide_$VRAM
+    subsegments:
+    - [0x1104120, asm]
+
+  - name: ovl_stage_header
+    exclusive_ram_id: overlay_header
+    ld_use_symbolic_vram_addresses: false
+    type: bin
+    bss_size: 0x0 # unknown
+    start: 0x1105E20
+    vram: 0x80008000
+    symbol_name_format: ovl_stage_header_$VRAM
+    subsegments:
+    - [0x1105E20, bin]
+
+  - name: ovl_stage_world1
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/stage/world1
+    bss_size: 0x0 # unknown
+    start: 0x1105E40
+    vram: 0x60000000
+    symbol_name_format: ovl_stage_world1_$VRAM
+    subsegments:
+    - [0x1105E40, asm]
+
+  - name: ovl_stage_world2
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/stage/world2
+    bss_size: 0x0 # unknown
+    start: 0x110A0D0
+    vram: 0x60000000
+    symbol_name_format: ovl_stage_world2_$VRAM
+    subsegments:
+    - [0x110A0D0, asm]
+
+  - name: ovl_stage_world3
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/stage/world3
+    bss_size: 0x0 # unknown
+    start: 0x110FE50
+    vram: 0x60000000
+    symbol_name_format: ovl_stage_world3_$VRAM
+    subsegments:
+    - [0x110FE50, asm]
+
+  - name: ovl_stage_world4
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/stage/world4
+    bss_size: 0x0 # unknown
+    start: 0x1116910
+    vram: 0x60000000
+    symbol_name_format: ovl_stage_world4_$VRAM
+    subsegments:
+    - [0x1116910, asm]
+
+  - name: ovl_stage_world5
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/stage/world5
+    bss_size: 0x0 # unknown
+    start: 0x111DE00
+    vram: 0x60000000
+    symbol_name_format: ovl_stage_world5_$VRAM
+    subsegments:
+    - [0x111DE00, asm]
+
+  - name: ovl_stage_world6
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/stage/world6
+    bss_size: 0x0 # unknown
+    start: 0x11219F0
+    vram: 0x60000000
+    symbol_name_format: ovl_stage_world6_$VRAM
+    subsegments:
+    - [0x11219F0, asm]
+
+  - name: ovl_stage_world7
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/stage/world7
+    bss_size: 0x0 # unknown
+    start: 0x1127F90
+    vram: 0x60000000
+    symbol_name_format: ovl_stage_world7_$VRAM
+    subsegments:
+    - [0x1127F90, asm]
+
+  - name: ovl_stage_world8
+    exclusive_ram_id: gamemode
+    ld_use_symbolic_vram_addresses: false
+    type: code
+    dir: overlays/stage/world8
+    bss_size: 0x0 # unknown
+    start: 0x112DAA0
+    vram: 0x60000000
+    symbol_name_format: ovl_stage_world8_$VRAM
+    subsegments:
+    - [0x112DAA0, asm]
+
   - [0x1137270]
