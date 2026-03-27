@@ -1,13 +1,13 @@
 name: Baku Bomberman 2 (JP)
 basename: bm64tsa
-sha1: 179cab7426755f14bd3f4999f3789eb6d7af64c4
+sha1: 1376a3147dbda940548683d04922b9e56f7a538b
 options:
   compiler: IDO
   symbol_addrs_path: linker_scripts/jp/symbol_addrs.txt
-  target_path: baserom.jp.z64
+  target_path: baserom.decomp.jp.z64
   basename: bm64tsa
   base_path: .
-  ld_script_path: bm64tsa.jp.ld
+  ld_script_path: bm64tsa.decomp.jp.ld
   platform: n64
   detect_redundant_function_end: true
   hasm_in_src_path: True
@@ -336,4 +336,4 @@ segments:
     - [0x28F4E0, bin]
 
   - [0x28F4F0, bin]
-  - [0x1000000]
+  - [0x1137270]

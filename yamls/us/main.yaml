@@ -1,13 +1,13 @@
 name: Bomberman 64 The Second Attack! (USA)
 basename: bm64tsa
-sha1: 66b1fd763793ecc6e03aa6c5d023df8de5351b9e
+sha1: f438aea1b6b313047fde569ce9a409fe17ad3966
 options:
   compiler: IDO
   symbol_addrs_path: linker_scripts/us/symbol_addrs.txt
-  target_path: baserom.us.z64
+  target_path: baserom.decomp.us.z64
   basename: bm64tsa
   base_path: .
-  ld_script_path: bm64tsa.us.ld
+  ld_script_path: bm64tsa.decomp.us.ld
   platform: n64
   detect_redundant_function_end: true
   hasm_in_src_path: True
@@ -298,4 +298,4 @@ segments:
     - [0x280000, bin] # addresses
 
   - [0x28F4F0, bin]
-  - [0x1000000]
+  - [0x113A370]
