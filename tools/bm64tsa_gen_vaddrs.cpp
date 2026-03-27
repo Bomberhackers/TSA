@@ -213,7 +213,9 @@ int generate_overlay_entry(struct FileEntry *entry, char *assets_path) {
         printf("    vram: 0x%08X\n", get_overlay_vram(entry->group)); // set VRAM
         printf("    symbol_name_format: ovl_%s_%s_$VRAM\n", entry->folder, newstr);
         printf("    subsegments:\n");
-        printf("    - [0x%7X, asm]\n", start_addr);
+        printf("    - [0x%7X, asm, exec]\n",  start_addr);
+        printf("    - [0x%7X, asm, exvec]\n", start_addr + 0x10);
+        printf("    - [0x%7X, asm]\n",        start_addr + 0xF50);
 
         // inc ptr
         start_addr += aligned_size;

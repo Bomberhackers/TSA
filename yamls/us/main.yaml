@@ -318,7 +318,9 @@ segments:
     vram: 0x40000000
     symbol_name_format: ovl_actor_main_$VRAM
     subsegments:
-    - [0x1000010, asm]
+    - [0x1000010, asm, exec]
+    - [0x1000020, asm, exvec]
+    - [0x1000F60, asm]
     - [0x101CEE0, data]
 
   - name: ovl_item_header
@@ -342,7 +344,9 @@ segments:
     vram: 0x41000000
     symbol_name_format: ovl_item_main_$VRAM
     subsegments:
-    - [0x10201E0, asm]
+    - [0x10201E0, asm, exec]
+    - [0x10201F0, asm, exvec]
+    - [0x1021130, asm]
 
   - name: ovl_coll_header
     exclusive_ram_id: overlay_header
@@ -365,7 +369,9 @@ segments:
     vram: 0x44000000
     symbol_name_format: ovl_coll_main_$VRAM
     subsegments:
-    - [0x10273D0, asm]
+    - [0x10273D0, asm, exec]
+    - [0x10273E0, asm, exvec]
+    - [0x1028320, asm]
 
   - name: ovl_mobj_header
     exclusive_ram_id: overlay_header
@@ -388,7 +394,9 @@ segments:
     vram: 0x45000000
     symbol_name_format: ovl_mobj_main_$VRAM
     subsegments:
-    - [0x102E100, asm]
+    - [0x102E100, asm, exec]
+    - [0x102E110, asm, exvec]
+    - [0x102F050, asm]
     - [0x103D9F0, data]
 
   - name: ovl_blast_header
@@ -412,7 +420,9 @@ segments:
     vram: 0x42000000
     symbol_name_format: ovl_blast_flame_$VRAM
     subsegments:
-    - [0x1040E10, asm]
+    - [0x1040E10, asm, exec]
+    - [0x1040E20, asm, exvec]
+    - [0x1041D60, asm]
 
   - name: ovl_blast_ice
     exclusive_ram_id: blast
@@ -424,7 +434,9 @@ segments:
     vram: 0x42000000
     symbol_name_format: ovl_blast_ice_$VRAM
     subsegments:
-    - [0x1044470, asm]
+    - [0x1044470, asm, exec]
+    - [0x1044480, asm, exvec]
+    - [0x10453C0, asm]
 
   - name: ovl_blast_wind
     exclusive_ram_id: blast
@@ -436,7 +448,9 @@ segments:
     vram: 0x42000000
     symbol_name_format: ovl_blast_wind_$VRAM
     subsegments:
-    - [0x1048430, asm]
+    - [0x1048430, asm, exec]
+    - [0x1048440, asm, exvec]
+    - [0x1049380, asm]
 
   - name: ovl_blast_ground
     exclusive_ram_id: blast
@@ -448,7 +462,9 @@ segments:
     vram: 0x42000000
     symbol_name_format: ovl_blast_ground_$VRAM
     subsegments:
-    - [0x104C8E0, asm]
+    - [0x104C8E0, asm, exec]
+    - [0x104C8F0, asm, exvec]
+    - [0x104D830, asm]
 
   - name: ovl_blast_elec
     exclusive_ram_id: blast
@@ -460,7 +476,9 @@ segments:
     vram: 0x42000000
     symbol_name_format: ovl_blast_elec_$VRAM
     subsegments:
-    - [0x1050FF0, asm]
+    - [0x1050FF0, asm, exec]
+    - [0x1051000, asm, exvec]
+    - [0x1051F40, asm]
 
   - name: ovl_blast_light
     exclusive_ram_id: blast
@@ -472,7 +490,9 @@ segments:
     vram: 0x42000000
     symbol_name_format: ovl_blast_light_$VRAM
     subsegments:
-    - [0x1055450, asm]
+    - [0x1055450, asm, exec]
+    - [0x1055460, asm, exvec]
+    - [0x10563A0, asm]
 
   - name: ovl_blast_dark
     exclusive_ram_id: blast
@@ -484,7 +504,9 @@ segments:
     vram: 0x42000000
     symbol_name_format: ovl_blast_dark_$VRAM
     subsegments:
-    - [0x1059700, asm]
+    - [0x1059700, asm, exec]
+    - [0x1059710, asm, exvec]
+    - [0x105A650, asm]
 
   - name: ovl_enemy_header
     exclusive_ram_id: overlay_header
@@ -507,7 +529,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world1_$VRAM
     subsegments:
-    - [0x105DE50, asm]
+    - [0x105DE50, asm, exec]
+    - [0x105DE60, asm, exvec]
+    - [0x105EDA0, asm]
 
   - name: ovl_enemy_world2
     exclusive_ram_id: enemy
@@ -519,7 +543,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world2_$VRAM
     subsegments:
-    - [0x10685D0, asm]
+    - [0x10685D0, asm, exec]
+    - [0x10685E0, asm, exvec]
+    - [0x1069520, asm]
 
   - name: ovl_enemy_world3
     exclusive_ram_id: enemy
@@ -531,7 +557,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world3_$VRAM
     subsegments:
-    - [0x1072EF0, asm]
+    - [0x1072EF0, asm, exec]
+    - [0x1072F00, asm, exvec]
+    - [0x1073E40, asm]
 
   - name: ovl_enemy_world4
     exclusive_ram_id: enemy
@@ -543,7 +571,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world4_$VRAM
     subsegments:
-    - [0x107D500, asm]
+    - [0x107D500, asm, exec]
+    - [0x107D510, asm, exvec]
+    - [0x107E450, asm]
 
   - name: ovl_enemy_world5
     exclusive_ram_id: enemy
@@ -555,7 +585,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world5_$VRAM
     subsegments:
-    - [0x1087490, asm]
+    - [0x1087490, asm, exec]
+    - [0x10874A0, asm, exvec]
+    - [0x10883E0, asm]
 
   - name: ovl_enemy_world6
     exclusive_ram_id: enemy
@@ -567,7 +599,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world6_$VRAM
     subsegments:
-    - [0x1091710, asm]
+    - [0x1091710, asm, exec]
+    - [0x1091720, asm, exvec]
+    - [0x1092660, asm]
 
   - name: ovl_enemy_world7
     exclusive_ram_id: enemy
@@ -579,7 +613,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world7_$VRAM
     subsegments:
-    - [0x109BBF0, asm]
+    - [0x109BBF0, asm, exec]
+    - [0x109BC00, asm, exvec]
+    - [0x109CB40, asm]
 
   - name: ovl_enemy_world8
     exclusive_ram_id: enemy
@@ -591,7 +627,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world8_$VRAM
     subsegments:
-    - [0x10A5E80, asm]
+    - [0x10A5E80, asm, exec]
+    - [0x10A5E90, asm, exvec]
+    - [0x10A6DD0, asm]
 
   - name: ovl_enemy_battle
     exclusive_ram_id: enemy
@@ -603,7 +641,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_enemy_battle_$VRAM
     subsegments:
-    - [0x10B0AF0, asm]
+    - [0x10B0AF0, asm, exec]
+    - [0x10B0B00, asm, exvec]
+    - [0x10B1A40, asm]
 
   - name: ovl_boss_header
     exclusive_ram_id: overlay_header
@@ -626,7 +666,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_boss_demon_$VRAM
     subsegments:
-    - [0x10BA3A0, asm]
+    - [0x10BA3A0, asm, exec]
+    - [0x10BA3B0, asm, exvec]
+    - [0x10BB2F0, asm]
 
   - name: ovl_boss_devil
     exclusive_ram_id: enemy
@@ -638,7 +680,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_boss_devil_$VRAM
     subsegments:
-    - [0x10C4B90, asm]
+    - [0x10C4B90, asm, exec]
+    - [0x10C4BA0, asm, exvec]
+    - [0x10C5AE0, asm]
 
   - name: ovl_boss_angel
     exclusive_ram_id: enemy
@@ -650,7 +694,9 @@ segments:
     vram: 0x43000000
     symbol_name_format: ovl_boss_angel_$VRAM
     subsegments:
-    - [0x10D0330, asm]
+    - [0x10D0330, asm, exec]
+    - [0x10D0340, asm, exvec]
+    - [0x10D1280, asm]
 
   - name: ovl_menu_header
     exclusive_ram_id: overlay_header
@@ -673,7 +719,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_menu_card_$VRAM
     subsegments:
-    - [0x10DC340, asm]
+    - [0x10DC340, asm, exec]
+    - [0x10DC350, asm, exvec]
+    - [0x10DD290, asm]
 
   - name: ovl_menu_title
     exclusive_ram_id: gamemode
@@ -685,7 +733,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_menu_title_$VRAM
     subsegments:
-    - [0x10DFA80, asm]
+    - [0x10DFA80, asm, exec]
+    - [0x10DFA90, asm, exvec]
+    - [0x10E09D0, asm]
 
   - name: ovl_menu_file
     exclusive_ram_id: gamemode
@@ -697,7 +747,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_menu_file_$VRAM
     subsegments:
-    - [0x10E4440, asm]
+    - [0x10E4440, asm, exec]
+    - [0x10E4450, asm, exvec]
+    - [0x10E5390, asm]
 
   - name: ovl_menu_battle
     exclusive_ram_id: gamemode
@@ -709,7 +761,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_menu_battle_$VRAM
     subsegments:
-    - [0x10E77A0, asm]
+    - [0x10E77A0, asm, exec]
+    - [0x10E77B0, asm, exvec]
+    - [0x10E86F0, asm]
 
   - name: ovl_menu_custom
     exclusive_ram_id: gamemode
@@ -721,7 +775,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_menu_custom_$VRAM
     subsegments:
-    - [0x10F37E0, asm]
+    - [0x10F37E0, asm, exec]
+    - [0x10F37F0, asm, exvec]
+    - [0x10F4730, asm]
 
   - name: ovl_menu_stage
     exclusive_ram_id: gamemode
@@ -733,7 +789,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_menu_stage_$VRAM
     subsegments:
-    - [0x10F8F10, asm]
+    - [0x10F8F10, asm, exec]
+    - [0x10F8F20, asm, exvec]
+    - [0x10F9E60, asm]
 
   - name: ovl_demo_header
     exclusive_ram_id: overlay_header
@@ -756,7 +814,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_demo_story_$VRAM
     subsegments:
-    - [0x10FF850, asm]
+    - [0x10FF850, asm, exec]
+    - [0x10FF860, asm, exvec]
+    - [0x11007A0, asm]
 
   - name: ovl_demo_guide
     exclusive_ram_id: gamemode
@@ -768,7 +828,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_demo_guide_$VRAM
     subsegments:
-    - [0x1107250, asm]
+    - [0x1107250, asm, exec]
+    - [0x1107260, asm, exvec]
+    - [0x11081A0, asm]
 
   - name: ovl_stage_header
     exclusive_ram_id: overlay_header
@@ -791,7 +853,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_stage_world1_$VRAM
     subsegments:
-    - [0x1108F70, asm]
+    - [0x1108F70, asm, exec]
+    - [0x1108F80, asm, exvec]
+    - [0x1109EC0, asm]
 
   - name: ovl_stage_world2
     exclusive_ram_id: gamemode
@@ -803,7 +867,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_stage_world2_$VRAM
     subsegments:
-    - [0x110D180, asm]
+    - [0x110D180, asm, exec]
+    - [0x110D190, asm, exvec]
+    - [0x110E0D0, asm]
 
   - name: ovl_stage_world3
     exclusive_ram_id: gamemode
@@ -815,7 +881,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_stage_world3_$VRAM
     subsegments:
-    - [0x1112E30, asm]
+    - [0x1112E30, asm, exec]
+    - [0x1112E40, asm, exvec]
+    - [0x1113D80, asm]
 
   - name: ovl_stage_world4
     exclusive_ram_id: gamemode
@@ -827,7 +895,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_stage_world4_$VRAM
     subsegments:
-    - [0x11198D0, asm]
+    - [0x11198D0, asm, exec]
+    - [0x11198E0, asm, exvec]
+    - [0x111A820, asm]
 
   - name: ovl_stage_world5
     exclusive_ram_id: gamemode
@@ -839,7 +909,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_stage_world5_$VRAM
     subsegments:
-    - [0x1120E00, asm]
+    - [0x1120E00, asm, exec]
+    - [0x1120E10, asm, exvec]
+    - [0x1121D50, asm]
 
   - name: ovl_stage_world6
     exclusive_ram_id: gamemode
@@ -851,7 +923,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_stage_world6_$VRAM
     subsegments:
-    - [0x1124A30, asm]
+    - [0x1124A30, asm, exec]
+    - [0x1124A40, asm, exvec]
+    - [0x1125980, asm]
 
   - name: ovl_stage_world7
     exclusive_ram_id: gamemode
@@ -863,7 +937,9 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_stage_world7_$VRAM
     subsegments:
-    - [0x112B010, asm]
+    - [0x112B010, asm, exec]
+    - [0x112B020, asm, exvec]
+    - [0x112BF60, asm]
 
   - name: ovl_stage_world8
     exclusive_ram_id: gamemode
@@ -875,6 +951,8 @@ segments:
     vram: 0x60000000
     symbol_name_format: ovl_stage_world8_$VRAM
     subsegments:
-    - [0x1130B60, asm]
+    - [0x1130B60, asm, exec]
+    - [0x1130B70, asm, exvec]
+    - [0x1131AB0, asm]
 
   - [0x113A370]
