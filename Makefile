@@ -190,9 +190,9 @@ submodules:
 
 split:
 	rm -rf $(DATA_DIRS) $(ASM_DIRS)
+	$(PACK) $(PACK_FLAGS)
 	$(CAT) yamls/$(VERSION)/main.yaml > $(SPLAT_YAML)
 	$(PYTHON) ./tools/n64splat/split.py $(SPLAT_YAML)
-	$(PACK) $(PACK_FLAGS)
 
 setup: submodules split
 
