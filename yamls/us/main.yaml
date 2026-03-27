@@ -59,7 +59,7 @@ segments:
     - [0x7430, asm]
     - [0x74A0, asm]
     - [0x7A70, asm]
-    - [0x7E40, asm]
+    - [0x7E40, asm, process]
     - [0x8A70, asm]
     - [0x9C70, asm]
     - [0xA750, asm]
