@@ -299,13 +299,30 @@ segments:
     - [0x96480, asm, zerojump_func]
     - [0x96520, data, zerojump_func]
 
-  - name: rest_of_data
-    type: data
-    bss_size: 0x0 # unknown
+  - name: zerojump_after
+    type: bin
+    bss_size: 0x0
     start: 0x965B0
-    vram: 0x00000000 # unknown
+    vram: 0x8C000000
     subsegments:
     - [0x965B0, bin] # addresses
+
+  - name: ovl_sizes
+    type: data
+    bss_size: 0x0 # unknown
+    start: 0xFF000
+    vram: 0x800ED0B0
+    subsegments:
+    - [0xFF000, data]
+
+    # TODO
+  - name: overlays
+    type: data
+    bss_size: 0x0 # unknown
+    start: 0x100000
+    vram: 0x8D000000 # unknown
+    subsegments:
+    - [0x100000, bin]
 
     # No idea how they reference static symbols. We are NOT worrying about that right now.
   - name: map

@@ -33,3 +33,7 @@ hmemset = 0x8000167C;
 finit = 0x80001F9C;
 ftell = 0x800016B0;
 fseek = 0x800016BC;
+fchangeblockaddr = 0x800021E0;
+fexecChangeBlock = 0x800021E8;
+init_setup = 0x80002220;
+fexecLoadAddress = 0x800024C0;

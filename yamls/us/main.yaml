@@ -45,9 +45,9 @@ segments:
     - [0x1BA0, asm, main]
     - [0x1D90, asm, gamemain]
     - [0x21A0, asm, memutil]
-    - [0x22B0, asm]
-    - [0x2C50, asm]
-    - [0x2DE0, asm]
+    - [0x22B0, asm, file]
+    - [0x2C50, asm, initproc]
+    - [0x2DE0, asm, fblock]
     - [0x3330, asm]
     - [0x34F0, asm]
     - [0x3F50, asm]
@@ -247,6 +247,38 @@ segments:
     - [0x8B570, asm]
     - [0x8B700, asm]
     - [0x8B7D0, data]
+
+  - name: unk_rsp
+    type: data
+    bss_size: 0x0 # unknown
+    start: 0x97AA0
+    vram: 0x90000000 # unknown
+    subsegments:
+    - [0x97AA0, bin] # addresses and RSP
+
+  - name: zerojump
+    type: code
+    bss_size: 0x0 # unknown
+    start: 0x98510
+    vram: 0x801D0000
+    subsegments:
+    - [0x98510, asm, zerojump_func]
+
+  - name: zerojump_after
+    type: bin
+    bss_size: 0x0
+    start: 0x98640
+    vram: 0x8C000000
+    subsegments:
+    - [0x98640, bin] # addresses
+
+  - name: ovl_sizes
+    type: data
+    bss_size: 0x0 # unknown
+    start: 0xFF000
+    vram: 0x800EF250
+    subsegments:
+    - [0xFF000, data]
 
   - name: undumped_overlays
     type: bin

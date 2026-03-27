@@ -40,6 +40,11 @@ ifeq ($(DUMMY),FAIL)
   $(error Failed to build tools)
 endif
 
+DUMMY_PACK != make -s -C tools/pack >&2 || echo FAIL
+ifeq ($(DUMMY_PACK),FAIL)
+  $(error Failed to build pack)
+endif
+
 ###################### Other Tools ######################
 
 N64CRC = tools/n64crc
@@ -95,6 +100,9 @@ CC_OLD = tools/ido_recomp/$(HOST_OS)/5.3/cc
 ASMPROC = $(PYTHON) tools/asmproc/build.py
 ASMPROC_FLAGS :=
 CAT := cat
+PACK_PATH := tools/pack
+PACK := $(PACK_PATH)/bin/pack.exe
+PACK_FLAGS := d $(PACK_PATH)/bin/baku2.$(VERSION).bin $(BASEROM) assets$(VERSION)
 
 # unverified
 MIPS_VERSION := -mips1
@@ -184,6 +192,7 @@ split:
 	rm -rf $(DATA_DIRS) $(ASM_DIRS)
 	$(CAT) yamls/$(VERSION)/main.yaml > $(SPLAT_YAML)
 	$(PYTHON) ./tools/n64splat/split.py $(SPLAT_YAML)
+	$(PACK) $(PACK_FLAGS)
 
 setup: submodules split
 
