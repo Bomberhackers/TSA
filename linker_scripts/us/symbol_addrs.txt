@@ -12752,3 +12752,7 @@ longjmp = 0x80073E44; // segment:boot_code
 GetMemoryAllocSize = 0x80006EC0; // segment:boot_code
 malloc = 0x80006DFC; // segment:boot_code
 InitMemory = 0x80007214; // segment:boot_code
+process_count = 0x800A59C4; // segment:boot_code
+top_process = 0x800A59BC; // segment:boot_code
+current_process = 0x800A59C0; // segment:boot_code
+process_jmp_buf = 0x800A5960; // segment:boot_code

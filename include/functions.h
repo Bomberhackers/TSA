@@ -8,13 +8,11 @@ extern s32 memset(void*, s32, s32);                               /* extern */
 extern s32 resetwatch();                                     /* extern */
 extern s32 AddSchedulerClient(s32*, OSMesgQueue*, s32);          /* extern */
 extern s32 CalcVecSet();                                     /* extern */
-extern s32 CallProcess(s32);                                   /* extern */
 extern s32 FlushController();                    /* extern */
 extern s32 InitController(s32, s32);                             /* extern */
 extern s32 InitExController();                               /* extern */
 extern s32 InitMalloc(s32*, s32);                                /* extern */
 extern s32 InitPack();                                       /* extern */
-extern s32 InitProcess();                                    /* extern */
 extern s32 InitSI();                                         /* extern */
 extern s32 InitScheduler(s32, s32);                              /* extern */
 extern s32 InitVibrator();                                   /* extern */
@@ -38,7 +36,6 @@ extern s32 gfxSetPointer(s32, void*);                        /* extern */
 extern s32 initAudio();                                      /* extern */
 extern s32 init_proc();                                      /* extern */
 extern s32 init_rnd(u32);                                    /* extern */
-extern s32 malloc(s32);                                      /* extern */
 extern s32 ndBuildSceneGfx(s32, s32);                      /* extern */
 extern s32 ndRealFreeEmbedB();                               /* extern */
 extern s32 obj2APIInit();                                    /* extern */

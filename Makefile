@@ -223,6 +223,7 @@ $(BUILD_DIR)/$(SRC_DIR)/dma.c.o: OPTFLAGS := -O3
 $(BUILD_DIR)/$(SRC_DIR)/decode.c.o: OPTFLAGS := -O3
 $(BUILD_DIR)/$(SRC_DIR)/zero_jump.c.o: OPTFLAGS := -O3
 $(BUILD_DIR)/$(SRC_DIR)/fblock.c.o: OPTFLAGS := -O3
+$(BUILD_DIR)/$(SRC_DIR)/process.c.o: OPTFLAGS := -O3
 
 ######################## Build #############################
 
