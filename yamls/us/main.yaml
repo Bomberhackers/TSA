@@ -255,6 +255,8 @@ segments:
     - [0x8B570, asm]
     - [0x8B700, data]
     - [0x8B7D0, data]
+    - [0x8E420, data]
+    - [0x8F240, data]
     - [0x957E0, .rodata, process]
     - [0x95970, rodata]
 
