@@ -13099,3 +13099,5 @@ fexecGetFileSize = 0x800022E4; // segment:boot_code
 fexecLoad = 0x800026EC; // segment:boot_code
 decode = 0x80002730; // segment:boot_code
 zjSetVec = 0x80073EF0; // segment:boot_code
+exec_zerojump_func = 0x801D0000; // segment:zerojump
+D_ovl_demo_story_600075C0 = 0x600075C0; // segment:ovl_demo_story

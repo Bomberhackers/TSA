@@ -275,6 +275,7 @@ segments:
     vram: 0x801D0000
     subsegments:
     - [0x98510, asm, zerojump_func]
+    - [0x985B0, data, zerojump_func]
 
   - name: zerojump_after
     type: bin
@@ -334,6 +335,7 @@ segments:
     - [0x1000020, asm, exvec]
     - [0x1000F60, asm]
     - [0x101CEE0, data]
+    - [0x101E3B0, rodata]
 
   - name: ovl_item_header
     exclusive_ram_id: overlay_header
@@ -360,6 +362,7 @@ segments:
     - [0x10201F0, asm, exvec]
     - [0x1021130, asm]
     - [0x10268B0, data]
+    - [0x1027270, rodata]
 
   - name: ovl_coll_header
     exclusive_ram_id: overlay_header
@@ -386,6 +389,7 @@ segments:
     - [0x10273E0, asm, exvec]
     - [0x1028320, asm]
     - [0x102D750, data]
+    - [0x102E060, rodata]
 
   - name: ovl_mobj_header
     exclusive_ram_id: overlay_header
@@ -412,6 +416,7 @@ segments:
     - [0x102E110, asm, exvec]
     - [0x102F050, asm]
     - [0x103D9F0, data]
+    - [0x103F8A0, rodata]
 
   - name: ovl_blast_header
     exclusive_ram_id: overlay_header
@@ -438,6 +443,7 @@ segments:
     - [0x1040E20, asm, exvec]
     - [0x1041D60, asm]
     - [0x1044240, data]
+    - [0x1044380, rodata]
 
   - name: ovl_blast_ice
     exclusive_ram_id: blast
@@ -453,6 +459,7 @@ segments:
     - [0x1044480, asm, exvec]
     - [0x10453C0, asm]
     - [0x1048170, data]
+    - [0x10482E0, rodata]
 
   - name: ovl_blast_wind
     exclusive_ram_id: blast
@@ -468,6 +475,7 @@ segments:
     - [0x1048440, asm, exvec]
     - [0x1049380, asm]
     - [0x104C670, data]
+    - [0x104C7C0, rodata]
 
   - name: ovl_blast_ground
     exclusive_ram_id: blast
@@ -483,6 +491,7 @@ segments:
     - [0x104C8F0, asm, exvec]
     - [0x104D830, asm]
     - [0x1050D30, data]
+    - [0x1050EB0, rodata]
 
   - name: ovl_blast_elec
     exclusive_ram_id: blast
@@ -498,6 +507,7 @@ segments:
     - [0x1051000, asm, exvec]
     - [0x1051F40, asm]
     - [0x10551B0, data]
+    - [0x1055330, rodata]
 
   - name: ovl_blast_light
     exclusive_ram_id: blast
@@ -513,6 +523,7 @@ segments:
     - [0x1055460, asm, exvec]
     - [0x10563A0, asm]
     - [0x1059490, data]
+    - [0x10595E0, rodata]
 
   - name: ovl_blast_dark
     exclusive_ram_id: blast
@@ -528,6 +539,7 @@ segments:
     - [0x1059710, asm, exvec]
     - [0x105A650, asm]
     - [0x105DB30, data]
+    - [0x105DCE0, rodata]
 
   - name: ovl_enemy_header
     exclusive_ram_id: overlay_header
@@ -554,6 +566,7 @@ segments:
     - [0x105DE60, asm, exvec]
     - [0x105EDA0, asm]
     - [0x1067C50, data]
+    - [0x1067E80, rodata]
 
   - name: ovl_enemy_world2
     exclusive_ram_id: enemy
@@ -569,6 +582,7 @@ segments:
     - [0x10685E0, asm, exvec]
     - [0x1069520, asm]
     - [0x10725A0, data]
+    - [0x10727C0, rodata]
 
   - name: ovl_enemy_world3
     exclusive_ram_id: enemy
@@ -584,6 +598,7 @@ segments:
     - [0x1072F00, asm, exvec]
     - [0x1073E40, asm]
     - [0x107CB90, data]
+    - [0x107CDB0, rodata]
 
   - name: ovl_enemy_world4
     exclusive_ram_id: enemy
@@ -599,6 +614,7 @@ segments:
     - [0x107D510, asm, exvec]
     - [0x107E450, asm]
     - [0x1086C50, data]
+    - [0x1086E70, rodata]
 
   - name: ovl_enemy_world5
     exclusive_ram_id: enemy
@@ -614,6 +630,7 @@ segments:
     - [0x10874A0, asm, exvec]
     - [0x10883E0, asm]
     - [0x1090F40, data]
+    - [0x1091150, rodata]
 
   - name: ovl_enemy_world6
     exclusive_ram_id: enemy
@@ -629,6 +646,7 @@ segments:
     - [0x1091720, asm, exvec]
     - [0x1092660, asm]
     - [0x109B2F0, data]
+    - [0x109B510, rodata]
 
   - name: ovl_enemy_world7
     exclusive_ram_id: enemy
@@ -644,6 +662,7 @@ segments:
     - [0x109BC00, asm, exvec]
     - [0x109CB40, asm]
     - [0x10A55D0, data]
+    - [0x10A57E0, rodata]
 
   - name: ovl_enemy_world8
     exclusive_ram_id: enemy
@@ -659,6 +678,7 @@ segments:
     - [0x10A5E90, asm, exvec]
     - [0x10A6DD0, asm]
     - [0x10B00B0, data]
+    - [0x10B0310, rodata]
 
   - name: ovl_enemy_battle
     exclusive_ram_id: enemy
@@ -674,6 +694,7 @@ segments:
     - [0x10B0B00, asm, exvec]
     - [0x10B1A40, asm]
     - [0x10B9B70, data]
+    - [0x10B9D50, rodata]
 
   - name: ovl_boss_header
     exclusive_ram_id: overlay_header
@@ -700,6 +721,7 @@ segments:
     - [0x10BA3B0, asm, exvec]
     - [0x10BB2F0, asm]
     - [0x10C4550, data]
+    - [0x10C4890, rodata]
 
   - name: ovl_boss_devil
     exclusive_ram_id: enemy
@@ -715,6 +737,7 @@ segments:
     - [0x10C4BA0, asm, exvec]
     - [0x10C5AE0, asm]
     - [0x10CFCB0, data]
+    - [0x10D0040, rodata]
 
   - name: ovl_boss_angel
     exclusive_ram_id: enemy
@@ -730,6 +753,7 @@ segments:
     - [0x10D0340, asm, exvec]
     - [0x10D1280, asm]
     - [0x10DBB20, data]
+    - [0x10DBFC0, rodata]
 
   - name: ovl_menu_header
     exclusive_ram_id: overlay_header
@@ -756,6 +780,7 @@ segments:
     - [0x10DC350, asm, exvec]
     - [0x10DD290, asm]
     - [0x10DF550, data]
+    - [0x10DF9E0, rodata]
 
   - name: ovl_menu_title
     exclusive_ram_id: gamemode
@@ -771,6 +796,7 @@ segments:
     - [0x10DFA90, asm, exvec]
     - [0x10E09D0, asm]
     - [0x10E3ED0, data]
+    - [0x10E4370, rodata]
 
   - name: ovl_menu_file
     exclusive_ram_id: gamemode
@@ -786,6 +812,7 @@ segments:
     - [0x10E4450, asm, exvec]
     - [0x10E5390, asm]
     - [0x10E7150, data]
+    - [0x10E7770, rodata]
 
   - name: ovl_menu_battle
     exclusive_ram_id: gamemode
@@ -801,6 +828,7 @@ segments:
     - [0x10E77B0, asm, exvec]
     - [0x10E86F0, asm]
     - [0x10F2530, data]
+    - [0x10F3640, rodata]
 
   - name: ovl_menu_custom
     exclusive_ram_id: gamemode
@@ -816,6 +844,7 @@ segments:
     - [0x10F37F0, asm, exvec]
     - [0x10F4730, asm]
     - [0x10F83B0, data]
+    - [0x10F8E90, rodata]
 
   - name: ovl_menu_stage
     exclusive_ram_id: gamemode
@@ -831,6 +860,7 @@ segments:
     - [0x10F8F20, asm, exvec]
     - [0x10F9E60, asm]
     - [0x10FE650, data]
+    - [0x10FF7A0, rodata]
 
   - name: ovl_demo_header
     exclusive_ram_id: overlay_header
@@ -857,6 +887,7 @@ segments:
     - [0x10FF860, asm, exvec]
     - [0x11007A0, asm]
     - [0x11060F0, data]
+    - [0x1107180, rodata]
 
   - name: ovl_demo_guide
     exclusive_ram_id: gamemode
@@ -872,6 +903,7 @@ segments:
     - [0x1107260, asm, exvec]
     - [0x11081A0, asm]
     - [0x1108F00, data]
+    - [0x1108F30, rodata]
 
   - name: ovl_stage_header
     exclusive_ram_id: overlay_header
@@ -898,6 +930,7 @@ segments:
     - [0x1108F80, asm, exvec]
     - [0x1109EC0, asm]
     - [0x110D040, data]
+    - [0x110D080, rodata]
 
   - name: ovl_stage_world2
     exclusive_ram_id: gamemode
@@ -913,6 +946,7 @@ segments:
     - [0x110D190, asm, exvec]
     - [0x110E0D0, asm]
     - [0x1112C80, data]
+    - [0x1112D10, rodata]
 
   - name: ovl_stage_world3
     exclusive_ram_id: gamemode
@@ -928,6 +962,7 @@ segments:
     - [0x1112E40, asm, exvec]
     - [0x1113D80, asm]
     - [0x1119650, data]
+    - [0x1119740, rodata]
 
   - name: ovl_stage_world4
     exclusive_ram_id: gamemode
@@ -943,6 +978,7 @@ segments:
     - [0x11198E0, asm, exvec]
     - [0x111A820, asm]
     - [0x1120B80, data]
+    - [0x1120C00, rodata]
 
   - name: ovl_stage_world5
     exclusive_ram_id: gamemode
@@ -958,6 +994,7 @@ segments:
     - [0x1120E10, asm, exvec]
     - [0x1121D50, asm]
     - [0x1124900, data]
+    - [0x1124960, rodata]
 
   - name: ovl_stage_world6
     exclusive_ram_id: gamemode
@@ -973,6 +1010,7 @@ segments:
     - [0x1124A40, asm, exvec]
     - [0x1125980, asm]
     - [0x112A5F0, data]
+    - [0x112AE70, rodata]
 
   - name: ovl_stage_world7
     exclusive_ram_id: gamemode
@@ -988,6 +1026,7 @@ segments:
     - [0x112B020, asm, exvec]
     - [0x112BF60, asm]
     - [0x11309A0, data]
+    - [0x1130A20, rodata]
 
   - name: ovl_stage_world8
     exclusive_ram_id: gamemode
@@ -1003,5 +1042,6 @@ segments:
     - [0x1130B70, asm, exvec]
     - [0x1131AB0, asm]
     - [0x113A010, data]
+    - [0x113A0B0, rodata]
 
   - [0x113A370]
