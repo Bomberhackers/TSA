@@ -86,7 +86,8 @@ segments:
     - [0x48BE0, asm]
     - [0x48C10, asm]
     - [0x49080, asm]
-    - [0x51A60, asm]
+    - [0x51A60, asm, module]
+    - [0x528B0, asm]
     - [0x57290, asm]
     - [0x577F0, asm]
     - [0x5A210, asm]
@@ -326,7 +327,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/actor/main
-    bss_size: 0x0 # unknown
+    bss_size: 0x20
     start: 0x1000010
     vram: 0x40000000
     symbol_name_format: ovl_actor_main_$VRAM
@@ -336,6 +337,8 @@ segments:
     - [0x1000F60, asm]
     - [0x101CEE0, data]
     - [0x101E3B0, rodata]
+
+    - {vram: 0x400201C0, type:  bss, name: ovl_actor_main}
 
   - name: ovl_item_header
     exclusive_ram_id: overlay_header
