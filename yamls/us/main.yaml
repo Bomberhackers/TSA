@@ -48,7 +48,7 @@ segments:
     - [0x22B0, asm, file]
     - [0x2C50, asm, initproc]
     - [0x2DE0, asm, fblock]
-    - [0x3330, asm]
+    - [0x3330, c, decode]
     - [0x34F0, asm]
     - [0x3F50, asm]
     - [0x4CA0, asm]
