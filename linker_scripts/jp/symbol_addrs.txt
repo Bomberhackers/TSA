@@ -15311,3 +15311,5 @@ EvGamesceneChangeCBP_60000f1c_stage_world8 = 0x60000f1c; // segment:ovl_stage_wo
 EvGamescenePLstate_60000f28_stage_world8 = 0x60000f28; // segment:ovl_stage_world8
 EvObj2APIShell_60000f34_stage_world8 = 0x60000f34; // segment:ovl_stage_world8
 EvObj2APIFreeExec_60000f40_stage_world8 = 0x60000f40; // segment:ovl_stage_world8
+D_ovl_mobj_main_4501077F = 0x4501077F; // segment:ovl_mobj_main size:1 type:u8
+D_ovl_mobj_main_45010780 = 0x45010780; // segment:ovl_mobj_main
