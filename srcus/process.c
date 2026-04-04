@@ -91,7 +91,7 @@ void SetProcessCheck(void);
 void CheckProcessStruct(void);
 void CheckProcessStackBroken(void);
 s32 CheckProcessStack(void);
-s32 GetProcessStackR(void);;
+s32 GetProcessStackR(void);
 
 void InitProcess(void) {
     process_count = 0;

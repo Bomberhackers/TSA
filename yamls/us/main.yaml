@@ -356,7 +356,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/item/main
-    bss_size: 0x0 # unknown
+    bss_size: 0x20
     start: 0x10201E0
     vram: 0x41000000
     symbol_name_format: ovl_item_main_$VRAM
@@ -366,6 +366,8 @@ segments:
     - [0x1021130, asm]
     - [0x10268B0, data]
     - [0x1027270, rodata]
+
+    - {vram: 0x410071E0, type:  bss, name: ovl_item_main}
 
   - name: ovl_coll_header
     exclusive_ram_id: overlay_header
@@ -383,7 +385,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/coll/main
-    bss_size: 0x0 # unknown
+    bss_size: 0x3290
     start: 0x10273D0
     vram: 0x44000000
     symbol_name_format: ovl_coll_main_$VRAM
@@ -393,6 +395,8 @@ segments:
     - [0x1028320, asm]
     - [0x102D750, data]
     - [0x102E060, rodata]
+
+    - {vram: 0x44006D20, type:  bss, name: ovl_coll_main}
 
   - name: ovl_mobj_header
     exclusive_ram_id: overlay_header
@@ -410,7 +414,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/mobj/main
-    bss_size: 0x0 # unknown
+    bss_size: 0x10
     start: 0x102E100
     vram: 0x45000000
     symbol_name_format: ovl_mobj_main_$VRAM
@@ -420,6 +424,8 @@ segments:
     - [0x102F050, asm]
     - [0x103D9F0, data]
     - [0x103F8A0, rodata]
+
+    - {vram: 0x45012CF0, type:  bss, name: ovl_mobj_main}
 
   - name: ovl_blast_header
     exclusive_ram_id: overlay_header
@@ -437,7 +443,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/blast/flame
-    bss_size: 0x0 # unknown
+    bss_size: 0x20
     start: 0x1040E10
     vram: 0x42000000
     symbol_name_format: ovl_blast_flame_$VRAM
@@ -448,12 +454,14 @@ segments:
     - [0x1044240, data]
     - [0x1044380, rodata]
 
+    - {vram: 0x42003660, type:  bss, name: ovl_blast_flame}
+
   - name: ovl_blast_ice
     exclusive_ram_id: blast
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/blast/ice
-    bss_size: 0x0 # unknown
+    bss_size: 0x20
     start: 0x1044470
     vram: 0x42000000
     symbol_name_format: ovl_blast_ice_$VRAM
@@ -464,12 +472,14 @@ segments:
     - [0x1048170, data]
     - [0x10482E0, rodata]
 
+    - {vram: 0x42003FC0, type:  bss, name: ovl_blast_ice}
+
   - name: ovl_blast_wind
     exclusive_ram_id: blast
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/blast/wind
-    bss_size: 0x0 # unknown
+    bss_size: 0x20
     start: 0x1048430
     vram: 0x42000000
     symbol_name_format: ovl_blast_wind_$VRAM
@@ -480,12 +490,14 @@ segments:
     - [0x104C670, data]
     - [0x104C7C0, rodata]
 
+    - {vram: 0x420044B0, type:  bss, name: ovl_blast_wind}
+
   - name: ovl_blast_ground
     exclusive_ram_id: blast
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/blast/ground
-    bss_size: 0x0 # unknown
+    bss_size: 0x20
     start: 0x104C8E0
     vram: 0x42000000
     symbol_name_format: ovl_blast_ground_$VRAM
@@ -496,12 +508,14 @@ segments:
     - [0x1050D30, data]
     - [0x1050EB0, rodata]
 
+    - {vram: 0x42004710, type:  bss, name: ovl_blast_ground}
+
   - name: ovl_blast_elec
     exclusive_ram_id: blast
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/blast/elec
-    bss_size: 0x0 # unknown
+    bss_size: 0x20
     start: 0x1050FF0
     vram: 0x42000000
     symbol_name_format: ovl_blast_elec_$VRAM
@@ -512,12 +526,14 @@ segments:
     - [0x10551B0, data]
     - [0x1055330, rodata]
 
+    - {vram: 0x42004460, type:  bss, name: ovl_blast_elec}
+
   - name: ovl_blast_light
     exclusive_ram_id: blast
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/blast/light
-    bss_size: 0x0 # unknown
+    bss_size: 0x20
     start: 0x1055450
     vram: 0x42000000
     symbol_name_format: ovl_blast_light_$VRAM
@@ -528,12 +544,14 @@ segments:
     - [0x1059490, data]
     - [0x10595E0, rodata]
 
+    - {vram: 0x420042B0, type:  bss, name: ovl_blast_light}
+
   - name: ovl_blast_dark
     exclusive_ram_id: blast
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/blast/dark
-    bss_size: 0x0 # unknown
+    bss_size: 0x20
     start: 0x1059700
     vram: 0x42000000
     symbol_name_format: ovl_blast_dark_$VRAM
@@ -543,6 +561,8 @@ segments:
     - [0x105A650, asm]
     - [0x105DB30, data]
     - [0x105DCE0, rodata]
+
+    - {vram: 0x42004730, type:  bss, name: ovl_blast_dark}
 
   - name: ovl_enemy_header
     exclusive_ram_id: overlay_header
@@ -560,7 +580,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/enemy/world1
-    bss_size: 0x0 # unknown
+    bss_size: 0x280
     start: 0x105DE50
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world1_$VRAM
@@ -571,12 +591,14 @@ segments:
     - [0x1067C50, data]
     - [0x1067E80, rodata]
 
+    - {vram: 0x4300A780, type:  bss, name: ovl_enemy_world1}
+
   - name: ovl_enemy_world2
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/enemy/world2
-    bss_size: 0x0 # unknown
+    bss_size: 0x280
     start: 0x10685D0
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world2_$VRAM
@@ -587,12 +609,14 @@ segments:
     - [0x10725A0, data]
     - [0x10727C0, rodata]
 
+    - {vram: 0x4300A920, type:  bss, name: ovl_enemy_world2}
+
   - name: ovl_enemy_world3
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/enemy/world3
-    bss_size: 0x0 # unknown
+    bss_size: 0x280
     start: 0x1072EF0
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world3_$VRAM
@@ -603,12 +627,14 @@ segments:
     - [0x107CB90, data]
     - [0x107CDB0, rodata]
 
+    - {vram: 0x4300A610, type:  bss, name: ovl_enemy_world3}
+
   - name: ovl_enemy_world4
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/enemy/world4
-    bss_size: 0x0 # unknown
+    bss_size: 0x280
     start: 0x107D500
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world4_$VRAM
@@ -619,12 +645,14 @@ segments:
     - [0x1086C50, data]
     - [0x1086E70, rodata]
 
+    - {vram: 0x43009F90, type:  bss, name: ovl_enemy_world4}
+
   - name: ovl_enemy_world5
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/enemy/world5
-    bss_size: 0x0 # unknown
+    bss_size: 0x280
     start: 0x1087490
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world5_$VRAM
@@ -635,12 +663,14 @@ segments:
     - [0x1090F40, data]
     - [0x1091150, rodata]
 
+    - {vram: 0x4300A280, type:  bss, name: ovl_enemy_world5}
+
   - name: ovl_enemy_world6
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/enemy/world6
-    bss_size: 0x0 # unknown
+    bss_size: 0x280
     start: 0x1091710
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world6_$VRAM
@@ -651,12 +681,14 @@ segments:
     - [0x109B2F0, data]
     - [0x109B510, rodata]
 
+    - {vram: 0x4300A4E0, type:  bss, name: ovl_enemy_world6}
+
   - name: ovl_enemy_world7
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/enemy/world7
-    bss_size: 0x0 # unknown
+    bss_size: 0x280
     start: 0x109BBF0
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world7_$VRAM
@@ -667,12 +699,14 @@ segments:
     - [0x10A55D0, data]
     - [0x10A57E0, rodata]
 
+    - {vram: 0x4300A290, type:  bss, name: ovl_enemy_world7}
+
   - name: ovl_enemy_world8
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/enemy/world8
-    bss_size: 0x0 # unknown
+    bss_size: 0x280
     start: 0x10A5E80
     vram: 0x43000000
     symbol_name_format: ovl_enemy_world8_$VRAM
@@ -683,12 +717,14 @@ segments:
     - [0x10B00B0, data]
     - [0x10B0310, rodata]
 
+    - {vram: 0x4300AC70, type:  bss, name: ovl_enemy_world8}
+
   - name: ovl_enemy_battle
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/enemy/battle
-    bss_size: 0x0 # unknown
+    bss_size: 0x280
     start: 0x10B0AF0
     vram: 0x43000000
     symbol_name_format: ovl_enemy_battle_$VRAM
@@ -698,6 +734,8 @@ segments:
     - [0x10B1A40, asm]
     - [0x10B9B70, data]
     - [0x10B9D50, rodata]
+
+    - {vram: 0x430098A0, type:  bss, name: ovl_enemy_battle}
 
   - name: ovl_boss_header
     exclusive_ram_id: overlay_header
@@ -715,7 +753,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/boss/demon
-    bss_size: 0x0 # unknown
+    bss_size: 0xB40
     start: 0x10BA3A0
     vram: 0x43000000
     symbol_name_format: ovl_boss_demon_$VRAM
@@ -726,12 +764,14 @@ segments:
     - [0x10C4550, data]
     - [0x10C4890, rodata]
 
+    - {vram: 0x4300A7F0, type:  bss, name: ovl_boss_demon}
+
   - name: ovl_boss_devil
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/boss/devil
-    bss_size: 0x0 # unknown
+    bss_size: 0xB40
     start: 0x10C4B90
     vram: 0x43000000
     symbol_name_format: ovl_boss_devil_$VRAM
@@ -742,12 +782,14 @@ segments:
     - [0x10CFCB0, data]
     - [0x10D0040, rodata]
 
+    - {vram: 0x4300B7A0, type:  bss, name: ovl_boss_devil}
+
   - name: ovl_boss_angel
     exclusive_ram_id: enemy
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/boss/angel
-    bss_size: 0x0 # unknown
+    bss_size: 0xBA0
     start: 0x10D0330
     vram: 0x43000000
     symbol_name_format: ovl_boss_angel_$VRAM
@@ -757,6 +799,8 @@ segments:
     - [0x10D1280, asm]
     - [0x10DBB20, data]
     - [0x10DBFC0, rodata]
+
+    - {vram: 0x4300BFF0, type:  bss, name: ovl_boss_angel}
 
   - name: ovl_menu_header
     exclusive_ram_id: overlay_header
@@ -774,7 +818,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/menu/card
-    bss_size: 0x0 # unknown
+    bss_size: 0x120
     start: 0x10DC340
     vram: 0x60000000
     symbol_name_format: ovl_menu_card_$VRAM
@@ -785,12 +829,14 @@ segments:
     - [0x10DF550, data]
     - [0x10DF9E0, rodata]
 
+    - {vram: 0x60003740, type:  bss, name: ovl_menu_card}
+
   - name: ovl_menu_title
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/menu/title
-    bss_size: 0x0 # unknown
+    bss_size: 0x120
     start: 0x10DFA80
     vram: 0x60000000
     symbol_name_format: ovl_menu_title_$VRAM
@@ -801,12 +847,14 @@ segments:
     - [0x10E3ED0, data]
     - [0x10E4370, rodata]
 
+    - {vram: 0x600049C0, type:  bss, name: ovl_menu_title}
+
   - name: ovl_menu_file
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/menu/file
-    bss_size: 0x0 # unknown
+    bss_size: 0x120
     start: 0x10E4440
     vram: 0x60000000
     symbol_name_format: ovl_menu_file_$VRAM
@@ -817,12 +865,14 @@ segments:
     - [0x10E7150, data]
     - [0x10E7770, rodata]
 
+    - {vram: 0x60003360, type:  bss, name: ovl_menu_file}
+
   - name: ovl_menu_battle
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/menu/battle
-    bss_size: 0x0 # unknown
+    bss_size: 0x1C0
     start: 0x10E77A0
     vram: 0x60000000
     symbol_name_format: ovl_menu_battle_$VRAM
@@ -833,12 +883,14 @@ segments:
     - [0x10F2530, data]
     - [0x10F3640, rodata]
 
+    - {vram: 0x6000C040, type:  bss, name: ovl_menu_battle}
+
   - name: ovl_menu_custom
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/menu/custom
-    bss_size: 0x0 # unknown
+    bss_size: 0x120
     start: 0x10F37E0
     vram: 0x60000000
     symbol_name_format: ovl_menu_custom_$VRAM
@@ -849,12 +901,14 @@ segments:
     - [0x10F83B0, data]
     - [0x10F8E90, rodata]
 
+    - {vram: 0x60005730, type:  bss, name: ovl_menu_custom}
+
   - name: ovl_menu_stage
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/menu/stage
-    bss_size: 0x0 # unknown
+    bss_size: 0xA0
     start: 0x10F8F10
     vram: 0x60000000
     symbol_name_format: ovl_menu_stage_$VRAM
@@ -864,6 +918,8 @@ segments:
     - [0x10F9E60, asm]
     - [0x10FE650, data]
     - [0x10FF7A0, rodata]
+
+    - {vram: 0x60006930, type:  bss, name: ovl_menu_stage}
 
   - name: ovl_demo_header
     exclusive_ram_id: overlay_header
@@ -881,7 +937,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/demo/story
-    bss_size: 0x0 # unknown
+    bss_size: 0x10
     start: 0x10FF850
     vram: 0x60000000
     symbol_name_format: ovl_demo_story_$VRAM
@@ -892,12 +948,14 @@ segments:
     - [0x11060F0, data]
     - [0x1107180, rodata]
 
+    - {vram: 0x60007A00, type:  bss, name: ovl_demo_story}
+
   - name: ovl_demo_guide
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/demo/guide
-    bss_size: 0x0 # unknown
+    bss_size: 0x10
     start: 0x1107250
     vram: 0x60000000
     symbol_name_format: ovl_demo_guide_$VRAM
@@ -907,6 +965,8 @@ segments:
     - [0x11081A0, asm]
     - [0x1108F00, data]
     - [0x1108F30, rodata]
+
+    - {vram: 0x60001D00, type:  bss, name: ovl_demo_guide}
 
   - name: ovl_stage_header
     exclusive_ram_id: overlay_header
@@ -924,7 +984,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/stage/world1
-    bss_size: 0x0 # unknown
+    bss_size: 0xA0
     start: 0x1108F70
     vram: 0x60000000
     symbol_name_format: ovl_stage_world1_$VRAM
@@ -935,12 +995,14 @@ segments:
     - [0x110D040, data]
     - [0x110D080, rodata]
 
+    - {vram: 0x60004210, type:  bss, name: ovl_stage_world1}
+
   - name: ovl_stage_world2
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/stage/world2
-    bss_size: 0x0 # unknown
+    bss_size: 0x110
     start: 0x110D180
     vram: 0x60000000
     symbol_name_format: ovl_stage_world2_$VRAM
@@ -951,12 +1013,14 @@ segments:
     - [0x1112C80, data]
     - [0x1112D10, rodata]
 
+    - {vram: 0x60005CB0, type:  bss, name: ovl_stage_world2}
+
   - name: ovl_stage_world3
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/stage/world3
-    bss_size: 0x0 # unknown
+    bss_size: 0xD0
     start: 0x1112E30
     vram: 0x60000000
     symbol_name_format: ovl_stage_world3_$VRAM
@@ -967,12 +1031,14 @@ segments:
     - [0x1119650, data]
     - [0x1119740, rodata]
 
+    - {vram: 0x60006AA0, type:  bss, name: ovl_stage_world3}
+
   - name: ovl_stage_world4
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/stage/world4
-    bss_size: 0x0 # unknown
+    bss_size: 0xB0
     start: 0x11198D0
     vram: 0x60000000
     symbol_name_format: ovl_stage_world4_$VRAM
@@ -983,12 +1049,14 @@ segments:
     - [0x1120B80, data]
     - [0x1120C00, rodata]
 
+    - {vram: 0x60007530, type:  bss, name: ovl_stage_world4}
+
   - name: ovl_stage_world5
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/stage/world5
-    bss_size: 0x0 # unknown
+    bss_size: 0xA0
     start: 0x1120E00
     vram: 0x60000000
     symbol_name_format: ovl_stage_world5_$VRAM
@@ -999,12 +1067,14 @@ segments:
     - [0x1124900, data]
     - [0x1124960, rodata]
 
+    - {vram: 0x60003C30, type:  bss, name: ovl_stage_world5}
+
   - name: ovl_stage_world6
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/stage/world6
-    bss_size: 0x0 # unknown
+    bss_size: 0x130
     start: 0x1124A30
     vram: 0x60000000
     symbol_name_format: ovl_stage_world6_$VRAM
@@ -1015,12 +1085,14 @@ segments:
     - [0x112A5F0, data]
     - [0x112AE70, rodata]
 
+    - {vram: 0x600065E0, type:  bss, name: ovl_stage_world6}
+
   - name: ovl_stage_world7
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/stage/world7
-    bss_size: 0x0 # unknown
+    bss_size: 0x140
     start: 0x112B010
     vram: 0x60000000
     symbol_name_format: ovl_stage_world7_$VRAM
@@ -1031,12 +1103,14 @@ segments:
     - [0x11309A0, data]
     - [0x1130A20, rodata]
 
+    - {vram: 0x60005B50, type:  bss, name: ovl_stage_world7}
+
   - name: ovl_stage_world8
     exclusive_ram_id: gamemode
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/stage/world8
-    bss_size: 0x0 # unknown
+    bss_size: 0xE0
     start: 0x1130B60
     vram: 0x60000000
     symbol_name_format: ovl_stage_world8_$VRAM
@@ -1046,5 +1120,7 @@ segments:
     - [0x1131AB0, asm]
     - [0x113A010, data]
     - [0x113A0B0, rodata]
+
+    - {vram: 0x60009810, type:  bss, name: ovl_stage_world8}
 
   - [0x113A370]
