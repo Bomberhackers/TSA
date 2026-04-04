@@ -34,7 +34,7 @@ segments:
     - [0x0B70, bin, bootcode_font]
   - name: boot_code
     type: code
-    bss_size: 0x0 # unknown
+    bss_size: 0x583B0 # entry is the wrong size?
     start: 0x1000
     vram: 0x80000400
     subsegments:
@@ -260,6 +260,8 @@ segments:
     - [0x8F240, data]
     - [0x957E0, .rodata, process]
     - [0x95970, rodata]
+
+    - {vram: 0x80096EA0, type:  bss, name: boot_code_unk_bss}
 
   - name: unk_rsp
     type: data
@@ -1074,7 +1076,7 @@ segments:
     ld_use_symbolic_vram_addresses: false
     type: code
     dir: overlays/stage/world6
-    bss_size: 0x130
+    bss_size: 0x380
     start: 0x1124A30
     vram: 0x60000000
     symbol_name_format: ovl_stage_world6_$VRAM
